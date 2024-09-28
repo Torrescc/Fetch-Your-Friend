@@ -126,6 +126,13 @@ div.buttons{
 div.buttons button img{
     height : 10vh;
     width: 10vh;
+    border-radius: 10px;
+}
+div.buttons button{
+    margin-left : 2vw;
+    margin-right: 2vw;
+    margin-bottom: 1vh;
+    border-radius: 10px;
 }
 .currentfilter{
     padding : 2pt; 
