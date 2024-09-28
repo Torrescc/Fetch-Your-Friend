@@ -19,6 +19,7 @@ div.filterList{
 
 div.name{
     font-weight: bolder;
+    text-align: center;
 }
 
 *.Catalog{
@@ -59,7 +60,10 @@ div.trait{
     font-family: Impact, Haettenschweiler , 'Arial Narrow Bold', sans-serif;
 }
 div.matchedtrait{
+    /* change this color later!*/
     border-color : greenyellow;
+    border-width: 2pt;
+    padding : 1pt;
     
 }
 
@@ -96,6 +100,7 @@ div.swipe{
     border-radius: 5px;
     border-color: black;
     border-style: solid;
+    margin : 40pt;
 }
 #swipedisplay{
     display: grid;
