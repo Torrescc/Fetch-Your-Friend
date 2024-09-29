@@ -7,12 +7,32 @@
     <title>Sign-up</title>
 </head>
 <body>
+	<style>
+		h2 {
+			background-color: rgb(0,134,188);
+			color: white;
+			border-radius: 25px;
+			padding: 20px 30px;
+			margin: 2px 4px;
+		}
+		section {
+			background: linear-gradient(rgb(0,134,188), rgb(101,4,181));
+			color: white;
+			border-radius: 25px;
+			padding: 20px 30px;
+			margin: 2px 4px;
+		}
+		b {
+			font-size: 18pt;
+		}
+	</style>
+	
 	<h2>Sign In/Sign Up</h2>
 	
 	<header></header>
 	
     <section>
-		<p>Sign up to view pets!</p>
+		<p><b>Sign up to view pets!</b></p>
 		<form action="index-logged-in.html" method="GET">
 			<label for "name">Enter Name (First and Last):</label>
 			<input type="text" id="name" name="name" size="24" required><br>
@@ -27,7 +47,7 @@
 			<input type="submit" value="Create Account"><br>
 		</form>
 		
-		<br><br><br><p>Already have an account? Sign in!</p>
+		<br><br><br><p><b>Already have an account? Sign in!</b></p>
 		<form action="index-logged-in.html" method="GET">
 			<label for "existuser">Enter Username:</label>
 			<input type="text" id="existuser" name="existuser" size="24" required><br>
