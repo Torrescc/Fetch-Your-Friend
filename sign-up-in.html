@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +7,36 @@
     <title>Sign-up</title>
 </head>
 <body>
-    
+	<h2>Sign In/Sign Up</h2>
+	
+	<header></header>
+	
+    <section>
+		<p>Sign up to view pets!</p>
+		<form action="index-logged-in.html" method="GET">
+			<label for "name">Enter Name (First and Last):</label>
+			<input type="text" id="name" name="name" size="24" required><br>
+			<label for "email">Enter Email Address:</label>
+			<input type="text" id="email" name="email" size="24" required><br>
+			<label for "user">Enter New Username:</label>
+			<input type="text" id="user" name="user" size="24" required><br>
+			<label for "pass">Enter New Password:</label>
+			<input type="text" id="pass" name="pass" size="24" required><br>
+			<label for "confirm">Confirm New Password:</label>
+			<input type="text" id="confirm" name="confirm" size="24" required><br>
+			<input type="submit" value="Create Account"><br>
+		</form>
+		
+		<br><br><br><p>Already have an account? Sign in!</p>
+		<form action="index-logged-in.html" method="GET">
+			<label for "existuser">Enter Username:</label>
+			<input type="text" id="existuser" name="existuser" size="24" required><br>
+			<label for "existpass">Enter Password:</label>
+			<input type="password" id="existpass" name="existpass" size="10" maxlength="10" required><br>
+			<input type="submit" value="Sign In"><br>
+		</form>
+	</section>
+	
+	<footer></footer>
 </body>
 </html>
