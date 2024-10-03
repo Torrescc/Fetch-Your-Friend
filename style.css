@@ -124,6 +124,10 @@ div.filters form{
     display: flex;
     flex-wrap: wrap;
 }
+div.filters form div{
+    margin-left : 20pt;
+    margin-right : 20pt;
+}
 div.filters{
     background-color: rgba(0,134,188 , 1);
     padding : 20pt; 
