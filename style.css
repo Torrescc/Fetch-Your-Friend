@@ -111,6 +111,13 @@ nav {
     object-fit: cover;
 }
 
+.home-content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
 /* End of Home Page Section */
 
 div.filters form{
