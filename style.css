@@ -11,6 +11,10 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.homepage-body {
+    background-color: lightgray;
+}
+
 nav {
     background-color: rgb(0,134,188); /* Updated nav background */
     padding: 10px 20px;
@@ -46,6 +50,11 @@ nav {
     font-family: 'PawWow', sans-serif;
     font-size: 48px;
     font-weight: bold;
+}
+
+.site-name a {
+    color: white;
+    text-decoration: none;
 }
 
 .nav-links {
