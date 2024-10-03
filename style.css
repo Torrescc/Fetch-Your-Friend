@@ -160,6 +160,7 @@ div.pet{
     border-radius: 5px;
     font-family: 'Times New Roman';
     padding :5pt;
+    position: relative;
 }
 *.pet > div{
     width : 3in;
@@ -195,12 +196,15 @@ working on increasing the size of the items in the catalog after looking at them
     font-size : 2em;
     transition-delay: 0.5s;
 }
-*.pet img:hover{
+
+
+
+*.pet a img:hover{
     width: 5in;
     height: 5in;
     transition-delay: 0.5s;
 }
-
+ 
 div.swipe img{
     height : 40vh;
     width : 40vh;
@@ -303,4 +307,14 @@ div.buttons button{
 	padding: 2vh 3vh;
 	margin: 0.2vh 0.4vh;
 	text-align: left;
+}
+div.pet button{
+    position: absolute;
+    z-index: 1;
+    top : 0in;
+    left : 0in;
+} 
+div.pet button img{
+    width : 0.5in;
+    height : 0.5in;
 }
