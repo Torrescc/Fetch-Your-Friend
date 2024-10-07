@@ -1,6 +1,15 @@
-window.addEventListener("click", faqClicked1);
-window.addEventListener("click", faqClicked2);
-window.addEventListener("click", faqClicked3);
+window.addEventListener("DOMContentLoaded", main);
+
+function main() {
+	let questionOne = document.getElementById("question1");
+	questionOne.addEventListener("click", faqClicked1);
+	
+	let questionTwo = document.getElementById("question2");
+	questionTwo.addEventListener("click", faqClicked2);
+	
+	let questionThree = document.getElementById("question3");
+	questionThree.addEventListener("click", faqClicked3);
+}
 
 function faqClicked1() {
 	let answer = document.getElementById("faq1");
