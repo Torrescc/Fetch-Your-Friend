@@ -126,7 +126,7 @@ nav {
 #topofCatalog{
     position: sticky;
     top : 0pt;
-    z-index : 1;
+    z-index : 2;
     height : 250pt;
     background-color: white;
 }
@@ -218,9 +218,7 @@ div.matchedtrait{
     padding : 1pt;
     
 }
-button{
-    z-index: 0;
-}
+
 #pageturner{
     position: fixed;
     top : 92%;
