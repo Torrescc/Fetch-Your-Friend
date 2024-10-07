@@ -120,6 +120,12 @@ nav {
 
 /* End of Home Page Section */
 
+
+/* start of catalog section */
+#catalogbody{
+    background-color: rgb(230, 230, 230);
+}
+
 div.filters form{
     display: flex;
     flex-wrap: wrap;
@@ -127,9 +133,13 @@ div.filters form{
 div.filters form div{
     margin-left : 20pt;
     margin-right : 20pt;
+    background-color: rgba(0,134,188 , 1);
+    padding : 10pt;
+    border-radius: 5px;
 }
 div.filters{
-    background-color: rgba(0,134,188 , 1);
+    border-radius: 5px;
+    background-color: rgba(180 , 180 ,180 ,1);
     padding : 20pt; 
     margin : 30pt;
     text-align: center;
@@ -192,6 +202,8 @@ div.matchedtrait{
     padding : 1pt;
     
 }
+
+/* end of stuff about pet catalog */
 
 /*
 working on increasing the size of the items in the catalog after looking at them
