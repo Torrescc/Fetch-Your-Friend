@@ -6,6 +6,7 @@
     <title>Contact Us</title>
 	
 	<link href="style.css" rel="stylesheet" type = "text/css">
+	<script src="script.js"></script>
 </head>
 <body class="contact-page">
     <nav>
@@ -32,18 +33,14 @@
 	 <h3 class = "note-contacts">Note: Please ask the animal shelter directly any questions on a specific pet or policies at the animal shelter. These FAQs and note have been taken from petfinder.com. We are going to rewrite them when we develop the pages' contents.</h3>
 	 
 	 <section class="faq-section">
-		<table class="faq">
-			<tr class="question-row">
-				<td>Where do I look for a new pet?</td>
-				<td>How do I find more information on a pet I found on Fetch Your Friend?</td>
-				<td>How do I find a home for a pet?</td>
-			</tr>
-			<tr class="answer-row">
-				<td>Fetch Your Friend displays adoptable pets from the Animal Humane Society's database. Visit our catalog page to search for animals with your desired traits! Visit our swipe page to swipe left or right on available pets!</td>
-				<td>Visit the Animal Humane Society's website for more information on a pet.</td>
-				<td>Visit the Animal Humane Society's website to post pets available for adoption.</td>
-			</tr>
-		</table>
+		<p>Where do I look for a new pet?</p>
+		<p hidden id="faq1">Fetch Your Friend displays adoptable pets from the Animal Humane Society's database. Visit our catalog page to search for animals with your desired traits! Visit our swipe page to swipe left or right on available pets!</p>
+		
+		<p>How do I find more information on a pet I found on Fetch Your Friend?</p>
+		<p hidden id="faq2">Visit the Animal Humane Society's website for more information on a pet.</p>
+		
+		<p>How do I find a home for a pet?</p>
+		<p hidden id="faq3">Visit the Animal Humane Society's website to post pets available for adoption.</p>
 	 </section>
 	 
 	 <h3 class = "note-contacts">Got any questions that weren't listed here? Contact us! By email is preferred.</h3>
