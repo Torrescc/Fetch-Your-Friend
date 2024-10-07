@@ -218,6 +218,14 @@ div.matchedtrait{
     padding : 1pt;
     
 }
+button{
+    z-index: 0;
+}
+#pageturner{
+    position: fixed;
+    top : 92%;
+    left :80%;
+}
 
 /* end of stuff about pet catalog */
 
@@ -287,7 +295,7 @@ div.buttons button img{
     border-radius: 10px;
 }
 div.buttons button{
-    z-index: 0;
+   
     margin-left : 2vw;
     margin-right: 2vw;
     margin-bottom: 1vh;
