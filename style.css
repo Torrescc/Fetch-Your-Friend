@@ -400,20 +400,8 @@ div.buttons button{
 	text-align: center;
 }
 
-.faq {
-	border: 0.2vh solid white;
-	padding: 4vh 2vh;
-	margin: 0.2vh 0.4vh;
-}
-
-.question-row > td {
+.question {
 	font-size: 14pt;
-	padding: 4vh 10vh;
-	margin: 0.2vh 0.4vh;
-}
-
-.answer-row > td {
-	font-size: 12pt;
 	padding: 4vh 10vh;
 	margin: 0.2vh 0.4vh;
 }
