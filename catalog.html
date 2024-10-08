@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Catalog</title>
     <link href="style.css" rel = "stylesheet">
+    <script src = "script.js"></script>
 </head>
-<body>
+<body id = "catalogbody">
+    <div id = "topofCatalog">
     <nav>
         <!-- Nav Top Div -->
         <div class="nav-top">
@@ -25,7 +27,7 @@
             </ul>
         </div>
     </nav>
-    
+
     <div class = "filters">
         <div>
             <div>
@@ -83,6 +85,10 @@
                 </select>
 
             </div>
+            <div id = "pageturner">
+                <input type = "number" name = "page" id = "page" value = "1">
+                <label for = "page">page number</label>
+            </div>
             <input type = "submit"  value = "search">
                 
         </form>
@@ -91,9 +97,9 @@
 
 
 
-    </div>
+    </div> <!--end of filters-->
 
-
+    </div><!--end of top of the page-->
 
 
 
@@ -102,6 +108,7 @@
             <button><img src = "checkmark.png" alt = "checkmark"></button>
             <a href = "https://example.org"><img src = "Dog.jpeg" alt = "a picture of one of our lovely pets offered"></a>
             <div class = "name"> Smelly </div>
+            <div class = "age">3 years</div>
             <div class = "breed">
                 German Shepard & Husky
             </div>
@@ -136,6 +143,7 @@
             <button><img src = "checkmark.png" alt = "checkmark"></button>
             <a href = "https://example.org"><img src = "Dog.jpeg" alt = "a picture of one of our lovely pets offered"></a>
             <div class = "name"> Smelly </div>
+            <div class = "age">3 years</div>
             <div class = "breed">
                 German Shepard & Husky
             </div>
@@ -167,6 +175,9 @@
 
         </div>
 
+      
+
     </div>
+    
 </body>
 </html>

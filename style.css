@@ -7,8 +7,31 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Nexa Regular';
+    src: url('./fonts/Nexa/OTF/Nexa-Trial-Regular.otf'), format('opentype');
+}
+
+@font-face {
+    font-family: 'Nexa Text Regular';
+    src: url('./fonts/Nexa\ Text/NexaText-Trial-Regular.otf'), format('opentype');
+}
+
+@font-face {
+    font-family: 'Nexa Bold';
+    src: url('./fonts/Nexa/OTF/Nexa-Trial-Bold.otf'), format('opentype');
+}
+
+@font-face {
+    font-family: 'Nexa Heavy';
+    src: url('./fonts/Nexa/OTF/Nexa-Trial-Heavy.otf'), format('opentype');
+}
+
 body {
-    font-family: Arial, sans-serif;
+    color: #4d4751;
+    font-family: 'Nexa Regular', arial, helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 .homepage-body {
@@ -112,13 +135,68 @@ nav {
 }
 
 .home-content-container {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
 }
 
+.content-container {
+    display: flex;
+    flex-direction: row;
+    width: 70vw;
+    margin-left: 15vw;
+}
+
+.home-content-title {
+    justify-content: center;
+    align-self: center;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    color: rgb(88, 88, 88);
+    font-size: 28px;
+    font-family: 'Nexa Regular', arial, helvetica, sans-serif;
+}
+
+.home-content {
+    color: #4d4751;
+    font-size: 16px;
+    font-family: 'Nexa Regular', arial, helvetica, sans-serif;
+    line-height: 25px;
+    padding: 0 15px;
+    font-weight: 400;
+}
+
+.content-title {
+    font-size: 28px;
+    font-family: 'Nexa Bold', arial, helvetica, sans-serif;
+    line-height: 32px;
+    color: rgb(101,4,181);
+    margin-bottom: 10px;
+    overflow: hidden;
+    padding: 0 15px;
+    text-overflow: ellipsis;
+}
+
 /* End of Home Page Section */
+
+
+/* start of catalog section */
+
+#topofCatalog{
+    position: sticky;
+    top : 0pt;
+    z-index : 2;
+    height : 250pt;
+    background-color: white;
+}
+#catalogbody{
+    background-color: rgb(230, 230, 230);
+}
 
 div.filters form{
     display: flex;
@@ -127,9 +205,13 @@ div.filters form{
 div.filters form div{
     margin-left : 20pt;
     margin-right : 20pt;
+    background-color: rgba(0,134,188 , 1);
+    padding : 10pt;
+    border-radius: 5px;
 }
 div.filters{
-    background-color: rgba(0,134,188 , 1);
+    border-radius: 5px;
+    background-color: rgba(180 , 180 ,180 ,1);
     padding : 20pt; 
     margin : 30pt;
     text-align: center;
@@ -152,8 +234,16 @@ div.name{
     flex-wrap: wrap;
     background-color: rgb(192, 192, 192);
     border-radius: 10px;
-    padding : 20pt
+    padding : 20pt;
+    
 }
+/*
+#catalogbody *.Catalog{
+    position: absolute;
+    top : 250pt;
+    left : 0pt;
+}
+    */
 *.pet img{
     width : 3in;
     height : 3in;
@@ -192,6 +282,14 @@ div.matchedtrait{
     padding : 1pt;
     
 }
+
+#pageturner{
+    position: fixed;
+    top : 92%;
+    left :80%;
+}
+
+/* end of stuff about pet catalog */
 
 /*
 working on increasing the size of the items in the catalog after looking at them
@@ -251,6 +349,7 @@ div.swipe{
 div.buttons{
     display: flex;
     justify-content: center;
+    
 }
 div.buttons button img{
     height : 10vh;
@@ -258,6 +357,7 @@ div.buttons button img{
     border-radius: 10px;
 }
 div.buttons button{
+   
     margin-left : 2vw;
     margin-right: 2vw;
     margin-bottom: 1vh;
