@@ -31,7 +31,7 @@
     <div class = "filters">
         <div>
             <div>
-                current filters
+                Current Filters
             </div>
             <div class = "filterList">
                 <div class="currentfilter">
@@ -55,7 +55,11 @@
         <form action = "catalog.html" method = "GET">
             <div>
                 <label for = "animal">animal</label><br>
-                <input type = "text" id = "animal" name = "animal" placeholder="Dog"> 
+                <select name = "animal" id = "animal">
+                    <option value="dog">dog</option>
+                    <option value = "cat">cat</option>
+                    <option value = "other">other</option>
+                </select> 
             </div>
             <div>
                 <label for="breed">breed</label><br>
@@ -84,10 +88,6 @@
                     <option value = "large">large</option>
                 </select>
 
-            </div>
-            <div id = "pageturner">
-                <input type = "number" name = "page" id = "page" value = "1">
-                <label for = "page">page number</label>
             </div>
             <input type = "submit"  value = "search">
                 
@@ -178,6 +178,10 @@
       
 
     </div>
-    
+    <div id = "pageTurner">
+        <p> &#x003c; </p>
+        <p> 1</p>
+        <p> &#x003e;</p>
+    </div>
 </body>
 </html>

@@ -12,7 +12,7 @@ var value = {
     size : "small",
     animal : "dog",
     trait : "smelly",
-    breed : "Husky"
+    breed : "husky"
 }
 
 
@@ -21,13 +21,16 @@ function evaluateScore(value  , Pet){
     if(Pet.animal.toLowerCase() == value.animal.toLowerCase()){
         score += 3;
     }
-    if(value.animal.toLowerCase() in Pet.breed){
-        score += 1;
+    for(let i =0; i < Pet.breed.length; i++){
+        if(value.breed.toLowerCase() == Pet.breed[i]){
+            score += 1;
+        }
     }
-    if(value.trait.toLowerCase() in Pet.traits){
-        score += 1;
+    for(let i =0; i < Pet.traits.length; i++){
+        if(value.trait.toLowerCase() == Pet.traits[i]){
+            score += 1;
+        }
     }
-
     // check age
     if("puppy" == value.age && Pet.months < 9){
         score += 1;
