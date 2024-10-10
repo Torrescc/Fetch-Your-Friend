@@ -34,6 +34,10 @@ body {
     line-height: 1.6;
 }
 
+p {
+    font-family: 'Nexa Text Regular', Arial, Helvetica, sans-serif;
+}
+
 .homepage-body {
     background-color: lightgray;
 }
@@ -89,6 +93,7 @@ nav {
 
 .nav-links li {
     margin: 0 15px;
+    font-family: 'Nexa Text Regular', Arial, Helvetica, sans-serif;
 }
 
 .nav-links a {
