@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f29f8286ae58d984ac0d8154d56223889d5defee
 var Pet = {
     name : "smelly" ,
     months : 37 ,
@@ -13,7 +16,11 @@ var value = {
     size : "small",
     animal : "dog",
     trait : "smelly",
+<<<<<<< HEAD
     breed : "Husky"
+=======
+    breed : "husky"
+>>>>>>> f29f8286ae58d984ac0d8154d56223889d5defee
 }
 
 
@@ -22,6 +29,7 @@ function evaluateScore(value  , Pet){
     if(Pet.animal.toLowerCase() == value.animal.toLowerCase()){
         score += 3;
     }
+<<<<<<< HEAD
     if(value.animal.toLowerCase() in Pet.breed){
         score += 1;
     }
@@ -29,6 +37,18 @@ function evaluateScore(value  , Pet){
         score += 1;
     }
 
+=======
+    for(let i =0; i < Pet.breed.length; i++){
+        if(value.breed.toLowerCase() == Pet.breed[i]){
+            score += 1;
+        }
+    }
+    for(let i =0; i < Pet.traits.length; i++){
+        if(value.trait.toLowerCase() == Pet.traits[i]){
+            score += 1;
+        }
+    }
+>>>>>>> f29f8286ae58d984ac0d8154d56223889d5defee
     // check age
     if("puppy" == value.age && Pet.months < 9){
         score += 1;
@@ -51,7 +71,10 @@ function evaluateScore(value  , Pet){
 }
 
 console.log(evaluateScore(value , Pet));
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> f29f8286ae58d984ac0d8154d56223889d5defee
 window.addEventListener("DOMContentLoaded", main);
 
 function main() {
@@ -79,4 +102,7 @@ function faqClicked3() {
 	let answer = document.getElementById("faq3");
 	answer.removeAttribute("hidden");
 }
+<<<<<<< HEAD
 >>>>>>> design_contacts
+=======
+>>>>>>> f29f8286ae58d984ac0d8154d56223889d5defee

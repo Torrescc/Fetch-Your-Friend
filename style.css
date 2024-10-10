@@ -284,9 +284,8 @@ div.matchedtrait{
 }
 
 #pageturner{
-    position: fixed;
-    top : 92%;
-    left :80%;
+    display: flex;
+    text-align: right;
 }
 
 /* end of stuff about pet catalog */
