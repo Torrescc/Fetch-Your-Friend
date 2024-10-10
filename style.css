@@ -378,26 +378,21 @@ div.buttons button{
     font-family: Impact, Haettenschweiler , 'Arial Narrow Bold', sans-serif;
 }
 
-/* For contact-us.html */
+/* For faqs.html */
 
-.topOfContacts {
-	padding: 0vh 0vh;
-	margin: 0vh 0vh;
-}
-
-.contact-page {
+.faqs_page {
 	background: linear-gradient(rgb(101,4,181), rgb(0,134,188));
 	color: white;
 	text-align: center;
 }
 
-.note-contacts {
+.note_faqs {
 	padding: 4vh 2vh;
 	margin: 0.2vh 0.4vh;
 	text-align: center;
 }
 
-.faq-section {
+.questions {
 	background: rgb(0,134,188);
 	color: white;
 	border-radius: 2vh;
@@ -410,6 +405,20 @@ div.buttons button{
 	font-size: 14pt;
 	padding: 4vh 10vh;
 	margin: 0.2vh 0.4vh;
+}
+
+/* For contact-us.html */
+
+.contact-page {
+	background: linear-gradient(rgb(101,4,181), rgb(0,134,188));
+	color: white;
+	text-align: center;
+}
+
+.note-contacts {
+	padding: 4vh 2vh;
+	margin: 0.2vh 0.4vh;
+	text-align: center;
 }
 
 .contacts {
