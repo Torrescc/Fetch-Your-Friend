@@ -289,9 +289,8 @@ div.matchedtrait{
 }
 
 #pageturner{
-    position: fixed;
-    top : 92%;
-    left :80%;
+    display: flex;
+    text-align: right;
 }
 
 /* end of stuff about pet catalog */
@@ -381,12 +380,14 @@ div.buttons button{
 
 /* For contact-us.html */
 
+.topOfContacts {
+	padding: 0vh 0vh;
+	margin: 0vh 0vh;
+}
+
 .contact-page {
 	background: linear-gradient(rgb(101,4,181), rgb(0,134,188));
 	color: white;
-	border-radius: 2vh;
-	padding: 3vh 3vh;
-	margin: 0.2vh 0.4vh;
 	text-align: center;
 }
 
@@ -405,20 +406,8 @@ div.buttons button{
 	text-align: center;
 }
 
-.faq {
-	border: 0.2vh solid white;
-	padding: 4vh 2vh;
-	margin: 0.2vh 0.4vh;
-}
-
-.question-row > td {
+.question {
 	font-size: 14pt;
-	padding: 4vh 10vh;
-	margin: 0.2vh 0.4vh;
-}
-
-.answer-row > td {
-	font-size: 12pt;
 	padding: 4vh 10vh;
 	margin: 0.2vh 0.4vh;
 }
@@ -427,8 +416,7 @@ div.buttons button{
 	background: rgb(0,134,188);
 	color: white;
 	border-radius: 2vh;
-	padding: 2vh 60vh;
-	margin: 0.2vh 0.4vh;
+	padding: 0vh 65vh;
 	text-align: center;
 }
 
@@ -443,9 +431,6 @@ div.buttons button{
 .profile {
 	background: linear-gradient(rgb(101,4,181), rgb(0,134,188));
 	color: white;
-	border-radius: 2vh;
-	padding: 3vh 3vh;
-	margin: 0.2vh 0.4vh;
 	text-align: center;
 }
 
@@ -466,8 +451,7 @@ div.buttons button{
 	background: rgb(0,134,188);
 	color: white;
 	border-radius: 2vh;
-	padding: 2vh 60vh;
-	margin: 0.2vh 0.4vh;
+	padding: 0vh 65vh;
 	text-align: center;
 }
 
