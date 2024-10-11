@@ -66,11 +66,10 @@ function main() {
 
 function qClicked() {
 	let a = this.nextElementSibling;
+	
 	if (a.hasAttribute("hidden")) {
-		console.log("answer unhidden");
 		a.removeAttribute("hidden");
 	} else {
-		console.log("answer hidden");
 		a.setAttribute("hidden", "");
 	}
 }
