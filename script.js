@@ -1,4 +1,3 @@
-
 var Pet = {
     name : "smelly" ,
     months : 37 ,
@@ -13,10 +12,7 @@ var value = {
     size : "small",
     animal : "dog",
     trait : "smelly",
-
-
     breed : "husky"
-
 };
 
 
@@ -58,30 +54,17 @@ function evaluateScore(value  , Pet){
 }
 
 console.log(evaluateScore(value , Pet));
+
 window.addEventListener("DOMContentLoaded", main);
 
 function main() {
-	let questionOne = document.getElementById("question1");
-	questionOne.addEventListener("click", faqClicked1);
-	
-	let questionTwo = document.getElementById("question2");
-	questionTwo.addEventListener("click", faqClicked2);
-	
-	let questionThree = document.getElementById("question3");
-	questionThree.addEventListener("click", faqClicked3);
+	let questions = document.getElementsByClassName("question");
+	for (let q of questions) {
+		q.addEventListener("click", qClicked);
+	}
 }
 
-function faqClicked1() {
-	let answer = document.getElementById("faq1");
-	answer.removeAttribute("hidden");
-}
-
-function faqClicked2() {
-	let answer = document.getElementById("faq2");
-	answer.removeAttribute("hidden");
-}
-
-function faqClicked3() {
-	let answer = document.getElementById("faq3");
-	answer.removeAttribute("hidden");
+function qClicked() {
+	let a = this.nextElementSibling;
+	a.removeAttribute("hidden");
 }

@@ -394,6 +394,34 @@ div.buttons button{
     font-family: Impact, Haettenschweiler , 'Arial Narrow Bold', sans-serif;
 }
 
+/* For contact-us.html */
+
+.contact-page {
+	background: linear-gradient(rgb(101,4,181), rgb(0,134,188));
+	color: white;
+	text-align: center;
+}
+
+.note-contacts {
+	padding: 4vh 2vh;
+	margin: 0.2vh 0.4vh;
+	text-align: center;
+}
+
+.contacts {
+	background: rgb(0,134,188);
+	color: white;
+	border-radius: 2vh;
+	padding: 0vh 65vh;
+	text-align: center;
+}
+
+.contact-row > td {
+	font-size: 12pt;
+	padding: 3vh 1vh;
+	margin: 0.2vh 0.4vh;
+}
+
 /* For faqs.html */
 
 .faqs_page {
@@ -423,36 +451,14 @@ div.buttons button{
 	margin: 0.2vh 0.4vh;
 }
 
-/* For contact-us.html */
-
-.contact-page {
-	background: linear-gradient(rgb(101,4,181), rgb(0,134,188));
-	color: white;
-	text-align: center;
-}
-
-.note-contacts {
-	padding: 4vh 2vh;
-	margin: 0.2vh 0.4vh;
-	text-align: center;
-}
-
-.contacts {
-	background: rgb(0,134,188);
-	color: white;
+.answer {
+	background: white;
+	color: black;
 	border-radius: 2vh;
-	padding: 0vh 65vh;
-	text-align: center;
-}
-
-.contact-row > td {
 	font-size: 12pt;
-	padding: 3vh 1vh;
+	padding: 4vh 10vh;
 	margin: 0.2vh 0.4vh;
 }
-
-
-
 
 /* For profile.html */
 
