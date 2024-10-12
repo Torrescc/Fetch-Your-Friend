@@ -222,6 +222,7 @@ div.filters{
     text-align: center;
     display: flex;
     flex-wrap: nowrap;
+    font-family: 'Nexa Text Regular';
 
 }
 div.filterList{
@@ -348,6 +349,16 @@ div.swipe{
     margin : 40pt;
     font-family: 'Nexa Text Regular';
 
+}
+
+div.swipeinfo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+div.swipeinfo div{
+    margin : 2pt;
+    margin-left: 5pt;
 }
 #swipedisplay{
     display: grid;
