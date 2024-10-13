@@ -269,6 +269,7 @@ div.character{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    color : black;
     /* to do later when you hover over add more traits */
 }
 div.trait{
@@ -325,8 +326,8 @@ working on increasing the size of the items in the catalog after looking at them
 
 /* end of stuff about pet catalog */
 div.swipe img{
-    height : 40vh;
-    width : 40vh;
+    height : 30vh;
+    width : 30vh;
    
     /* I am RAGIng the stupid image wouldn't center*/
 }
@@ -348,6 +349,7 @@ div.swipe{
     border-style: solid;
     margin : 40pt;
     font-family: 'Nexa Text Regular';
+    color : white;
 
 }
 
@@ -355,10 +357,13 @@ div.swipeinfo{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
 }
 div.swipeinfo div{
     margin : 2pt;
     margin-left: 5pt;
+    margin-right : 5pt;
+    font-size: 10pt;
 }
 #swipedisplay{
     display: grid;
@@ -401,7 +406,7 @@ div.buttons button{
     border-style: solid;
     border-radius : 2px;
     margin: 3pt;
-    font-size: 12pt;
+    font-size: 10pt;
     font-family: Impact, Haettenschweiler , 'Arial Narrow Bold', sans-serif;
 }
 
