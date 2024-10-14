@@ -223,7 +223,12 @@ div.filters{
     display: flex;
     flex-wrap: nowrap;
     font-family: 'Nexa Text Regular';
+    color : white;
+    
 
+}
+div.filters > div{
+    background-color: rgb(0,134,188);
 }
 div.filterList{
     display: flex;
@@ -261,6 +266,7 @@ div.pet{
     font-family: 'Times New Roman';
     padding :5pt;
     position: relative;
+    color : black;
 }
 *.pet > div{
     width : 3in;
@@ -289,7 +295,6 @@ div.matchedtrait{
     padding : 1pt;
     
 }
-
 
 
 
@@ -340,7 +345,8 @@ div.swipe{
     text-align: center;
     
     background: linear-gradient(30deg , rgba(0,134,188 , 1) , rgba(0,134,188 , 0.3) , rgba(101,4,181 , 0.3) , rgba(101,4,181 , 1));
-    padding : 30pt;
+    padding-top: 2.5vw;
+    padding-bottom: 10vw;
     width : 50vw;
     height: 60vh;
     border-width: 5pt;
@@ -402,7 +408,7 @@ div.buttons button{
 .currentfilter{
     padding : 2pt; 
     border-width : 1pt;
-    border-color : black;
+    border-color : white;
     border-style: solid;
     border-radius : 2px;
     margin: 3pt;
