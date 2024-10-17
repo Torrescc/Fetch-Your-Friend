@@ -343,7 +343,9 @@ div.swipe{
     grid-template-columns: auto;
     justify-content: center;
     text-align: center;
-    
+    position: fixed;
+    top: 10vh;
+    left : 20vw;
     background: linear-gradient(30deg , rgba(0,134,188 , 1) , rgba(0,134,188 , 0.3) , rgba(101,4,181 , 0.3) , rgba(101,4,181 , 1));
     padding-top: 2.5vw;
     padding-bottom: 10vw;
@@ -377,6 +379,7 @@ div.swipeinfo div{
     justify-content: center; 
     background-color: gray;
     width: 80vw;
+    
 }
 
 .center{
