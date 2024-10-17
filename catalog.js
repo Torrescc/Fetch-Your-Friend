@@ -29,17 +29,33 @@ function pageDown(){
 // on load creates all the pets availble to see in catalog
 function addAllPets(){
     for(let i = 0; i < 40; i++){
-    addPet(Pet);
+       addPetToCatalog(Pet);
     }
 }
 
 
 // adds a pet to the catalog based on the pet object it's handed
-function addPet(pet){
+function addPetToSwipe(pet){
+    var swipe = document.getElementByID("swipedisplay")[0];
+    var newPet = document.createElement("div");
+    catalog.appendChild(newPet);
+    newPet.setAttribute("class" , "swipe");
+    
+
+    
+    addImage(newPet , pet.image , pet.link);
+    addName(newPet , pet.name );
+    addAge(newPet , pet.months);
+    addBio(newPet , generateBio(pet));
+    addBreeds(newPet , pet.breed);
+    addTraits(newPet , pet.traits);
+}
+function addPetToCatalog(pet){
     var catalog = document.getElementsByClassName("Catalog")[0];
     var newPet = document.createElement("div");
     catalog.appendChild(newPet);
     newPet.setAttribute("class" , "pet");
+    
     addCheckButton(newPet);
     addImage(newPet , pet.image , pet.link);
     addName(newPet , pet.name );
@@ -48,6 +64,30 @@ function addPet(pet){
     addBreeds(newPet , pet.breed);
     addTraits(newPet , pet.traits);
 }
+
+
+function addPetToSavedPets(pet){
+    var catalog = document.getElementsByClassName("Catalog")[0];
+    var newPet = document.createElement("div");
+    catalog.appendChild(newPet);
+    newPet.setAttribute("class" , "pet");
+    
+    addImage(newPet , pet.image , pet.link);
+    addName(newPet , pet.name );
+    addAge(newPet , pet.months);
+    addBio(newPet , generateBio(pet));
+    addBreeds(newPet , pet.breed);
+    addTraits(newPet , pet.traits);
+}
+
+
+
+
+
+
+
+
+
 function addCheckButton(container){
     let button = document.createElement("button");
     container.appendChild(button);
