@@ -25,10 +25,16 @@ function pageDown(){
         document.getElementById("pageNumber").textContent =  Number(document.getElementById("pageNumber").textContent) - 1;
     }
 }
+
+// on load creates all the pets availble to see in catalog
 function addAllPets(){
+    for(let i = 0; i < 40; i++){
     addPet(Pet);
+    }
 }
 
+
+// adds a pet to the catalog based on the pet object it's handed
 function addPet(pet){
     var catalog = document.getElementsByClassName("Catalog")[0];
     var newPet = document.createElement("div");
@@ -38,6 +44,9 @@ function addPet(pet){
     addImage(newPet , pet.image , pet.link);
     addName(newPet , pet.name );
     addAge(newPet , pet.months);
+    addBio(newPet , generateBio(pet));
+    addBreeds(newPet , pet.breed);
+    addTraits(newPet , pet.traits);
 }
 function addCheckButton(container){
     let button = document.createElement("button");
@@ -75,4 +84,45 @@ function addAge(container , months){
     ageDiv.textContent = age;
     container.appendChild(ageDiv);
 }
+function addBreeds(container , breeds){
+    let len = breeds.length;
+    let text = "";
+    for(let i = 0; i < len ; i++){
+        if(i == len-1 && i != 0){
+            text += " & "
+        }
+        
+        text += breeds[i]
+        
+    }
+    let breedDiv = document.createElement("div");
+    breedDiv.setAttribute('class' , "breed");
+    breedDiv.textContent = text;
+    container.appendChild(breedDiv);
+}
+function addBio(container , bio){
+    let bioDiv = document.createElement("div");
+    bioDiv.setAttribute('class' , 'bio');
+    bioDiv.textContent = bio;
+    container.appendChild(bioDiv);
+}
+function generateBio(pet){
+    let trait = pet.traits[Math.floor(Math.random() * pet.traits.length)];
+    
+    return "hi am " + pet.name + " and I am " + trait;
+}
 
+function addTraits(container , traits){
+    let divTraitList = document.createElement("div");
+    divTraitList.setAttribute("class" , "character");
+    container.appendChild(divTraitList);
+
+    for(let i = 0; i < traits.length; i++){
+        let divTrait = document.createElement("div");
+        divTrait.setAttribute("class" , "trait");
+        divTrait.textContent = traits[i];
+        divTraitList.appendChild(divTrait);
+    }
+    
+
+}
