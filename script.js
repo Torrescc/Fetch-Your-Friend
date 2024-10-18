@@ -66,10 +66,15 @@ function main() {
 
 function qClicked() {
 	let a = this.nextElementSibling;
+	let arrow = this.getElementsByClassName("arrow up");
 	
 	if (a.hasAttribute("hidden")) {
 		a.removeAttribute("hidden");
+		arrow.classList.remove("up");
+		arrow.classList.add("down");
 	} else {
 		a.setAttribute("hidden", "");
+		arrow.classList.remove("down");
+		arrow.classList.add("up");
 	}
 }

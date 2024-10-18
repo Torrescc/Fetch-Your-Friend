@@ -411,6 +411,7 @@ div.buttons button{
 .contacts {
 	background: rgb(0,134,188);
 	color: white;
+	width: 100vw;
 	border-radius: 2vh;
 	padding: 0vh 65vh;
 	text-align: center;
@@ -439,6 +440,7 @@ div.buttons button{
 .questions {
 	background: rgb(0,134,188);
 	color: white;
+	width: 100%;
 	border-radius: 2vh;
 	padding: 2vh 30vh;
 	margin: 0.2vh 0.4vh;
@@ -485,6 +487,16 @@ div.buttons button{
 	text-align: center;
 }
 
+.user-info {
+	background: rgb(0,134,188);
+	color: white;
+	display: flex;
+	width: 100%;
+	border-radius: 2vh;
+	padding: 0vh 65vh;
+	text-align: center;
+}
+
 *.profile-row > td {
 	font-size: 14pt;
 	padding: 4vh 2vh;
@@ -496,14 +508,6 @@ div.buttons button{
 	margin: 0.2vh 0.4vh;
 	text-align: center;
 	font-size: 28pt;
-}
-
-.user-info {
-	background: rgb(0,134,188);
-	color: white;
-	border-radius: 2vh;
-	padding: 0vh 65vh;
-	text-align: center;
 }
 
 /* For sign-up-in.html */
