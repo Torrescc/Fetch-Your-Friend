@@ -1,5 +1,11 @@
 window.addEventListener("DOMContentLoaded", connect);
-window.addEventListener("DOMContentLoaded" , addAllPets);
+
+
+let url = window.location.href.slice(window.location.href.lastIndexOf("/")+1 , window.location.href.lastIndexOf("?"));
+console.log(url);
+if(url == "catalog.html" || url == "catalog.htm"){
+    window.addEventListener("DOMContentLoaded" , addAllPets);
+}
 var Pet = {
     name : "smelly" ,
     months : 37 ,
