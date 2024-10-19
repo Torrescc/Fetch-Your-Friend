@@ -11,6 +11,8 @@ var Pet = {
     image : "Dog.jpeg",
 };
 
+var savedPets = [];
+
 
 function connect(){
     document.getElementById("pageTurner").children[0].addEventListener("click" , pageDown);
@@ -29,10 +31,32 @@ function pageDown(){
 // on load creates all the pets availble to see in catalog
 function addAllPets(){
     for(let i = 0; i < 40; i++){
+        
+        Pet.name = "smelly" + i; // for testing
        addPetToCatalog(Pet);
     }
 }
 
+
+// saves pets from catalog
+// the checkmarks are listening for this event
+function savePetFromButtonOnCatalog(){
+   for(let i = 0; i < this.parentElement.classList.length; i++){
+      if(isJsonString(this.parentElement.classList[i])){
+        savedPets.push(JSON.parse(this.parentElement.classList[1]));
+      }
+    }
+    this.parentElement.remove();
+   
+}
+// test print all the SavedPets
+function printSaved(){
+    for(let i =0; i < savedPets.length; i++){
+        console.log(savedPets[i].name);
+    }
+}
+
+// funtions that add pets to display ->
 
 // adds a pet to the catalog based on the pet object it's handed
 function addPetToSwipe(pet){
@@ -54,7 +78,10 @@ function addPetToCatalog(pet){
     var catalog = document.getElementsByClassName("Catalog")[0];
     var newPet = document.createElement("div");
     catalog.appendChild(newPet);
-    newPet.setAttribute("class" , "pet");
+    
+    newPet.classList.add("pet");
+    newPet.classList.add(JSON.stringify(pet));
+    
     
     addCheckButton(newPet);
     addImage(newPet , pet.image , pet.link);
@@ -64,8 +91,6 @@ function addPetToCatalog(pet){
     addBreeds(newPet , pet.breed);
     addTraits(newPet , pet.traits);
 }
-
-
 function addPetToSavedPets(pet){
     var catalog = document.getElementsByClassName("Catalog")[0];
     var newPet = document.createElement("div");
@@ -80,6 +105,7 @@ function addPetToSavedPets(pet){
     addTraits(newPet , pet.traits);
 }
 
+// end of functions that add pets to display
 
 
 
@@ -87,6 +113,7 @@ function addPetToSavedPets(pet){
 
 
 
+// different elements to be added when creating a pet display
 
 function addCheckButton(container){
     let button = document.createElement("button");
@@ -95,6 +122,7 @@ function addCheckButton(container){
     checkMark.setAttribute("src" , "checkmark.png");
     checkMark.setAttribute("alt" , "a green checkmark");
     button.appendChild(checkMark);
+    button.addEventListener("click" , savePetFromButtonOnCatalog);
 }
 function addImage(container , image , link){
     let a = document.createElement("a");
@@ -166,3 +194,15 @@ function addTraits(container , traits){
     
 
 }
+// end of pet elements
+
+// helper function
+function isJsonString(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
+
