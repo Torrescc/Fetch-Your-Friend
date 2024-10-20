@@ -1,10 +1,17 @@
-window.addEventListener("DOMContentLoaded", connect);
+var swipePointer1;
+var swipePointer2;
+var swipePointer3;
+var number = 1;
 
 
+// checks which function we are using
 let url = window.location.href.slice(window.location.href.lastIndexOf("/")+1 , window.location.href.lastIndexOf("?"));
-console.log(url);
 if(url == "catalog.html" || url == "catalog.htm"){
     window.addEventListener("DOMContentLoaded" , addAllPets);
+    window.addEventListener("DOMContentLoaded", connect);
+}
+if(url ==  "swipe.htm" || url == "swipe.html"){
+    window.addEventListener("DOMContentLoaded" , startAndConnectSwipe);
 }
 var Pet = {
     name : "smelly" ,
@@ -19,7 +26,7 @@ var Pet = {
 
 var savedPets = [];
 
-
+//page turner functions
 function connect(){
     document.getElementById("pageTurner").children[0].addEventListener("click" , pageDown);
     document.getElementById("pageTurner").children[2].addEventListener("click" , pageUp);
@@ -27,18 +34,30 @@ function connect(){
 }
 function pageUp(){
     document.getElementById("pageNumber").textContent =  Number(document.getElementById("pageNumber").textContent) + 1;
+    addAllPets();
 }
 function pageDown(){
     if(Number(document.getElementById("pageNumber").textContent) > 1){
         document.getElementById("pageNumber").textContent =  Number(document.getElementById("pageNumber").textContent) - 1;
+        addAllPets();
     }
-}
 
+}
+// end of page turner
+
+
+//functions for catalog
 // on load creates all the pets availble to see in catalog
+// to do: work with api
 function addAllPets(){
+    var catalog = document.getElementsByClassName("Catalog")[0];
+    // remove all privous entries
+    while(catalog.children.length > 0){
+        catalog.children[0].remove();
+    }
+    // add them back in based on page number
     for(let i = 0; i < 40; i++){
-        
-        Pet.name = "smelly" + i; // for testing
+        Pet.name = "smelly" + (i + 40 * (Number(document.getElementById("pageNumber").textContent) - 1)); // for testing
        addPetToCatalog(Pet);
     }
 }
@@ -57,20 +76,60 @@ function savePetFromButtonOnCatalog(){
 }
 // test print all the SavedPets
 function printSaved(){
+    
     for(let i =0; i < savedPets.length; i++){
         console.log(savedPets[i].name);
     }
 }
+//end of catalog
+
+//fucntions for swipe
+
+function startAndConnectSwipe(){
+    document.getElementById("deny").addEventListener("click" , cycle);
+    document.getElementById("accept").addEventListener("click" , saveAndCycle);
+    swipePointer1 = addPetToSwipe(getNextPetSwipe());
+    swipePointer2 = addPetToSwipe(getNextPetSwipe());
+    swipePointer3 = addPetToSwipe(getNextPetSwipe());
+    resetZaxis();
+}
+
+//happens after a regection and a keep to show new canitdates
+function cycle(){
+    swipePointer1.remove();
+    swipePointer1 = swipePointer2;
+    swipePointer2 = swipePointer3;
+    swipePointer3 = addPetToSwipe(getNextPetSwipe());
+    resetZaxis();
+}
+function resetZaxis(){
+    swipePointer1.setAttribute("style" , "z-index: 3;");
+    swipePointer2.setAttribute("style" , "z-index: 2;");
+    swipePointer3.setAttribute("style" , "z-index: 1;");
+
+}
+// save then cycle happens when accept
+function saveAndCycle(){
+    savedPets.push(JSON.parse(jsonFromList(swipePointer1.classList)));
+    cycle();
+}
+// get next swipe
+function getNextPetSwipe(){
+    Pet.name = "smelly" + number++;
+    return Pet;
+}
+
+// end of swipe
 
 // funtions that add pets to display ->
 
 // adds a pet to the catalog based on the pet object it's handed
 function addPetToSwipe(pet){
-    var swipe = document.getElementByID("swipedisplay")[0];
+    var swipe = document.getElementById("swipedisplay");
     var newPet = document.createElement("div");
-    catalog.appendChild(newPet);
-    newPet.setAttribute("class" , "swipe");
-    
+    swipe.appendChild(newPet);
+    newPet.classList.add("swipe");
+    newPet.classList.add(JSON.stringify(pet));
 
     
     addImage(newPet , pet.image , pet.link);
@@ -79,6 +138,7 @@ function addPetToSwipe(pet){
     addBio(newPet , generateBio(pet));
     addBreeds(newPet , pet.breed);
     addTraits(newPet , pet.traits);
+    return newPet;
 }
 function addPetToCatalog(pet){
     var catalog = document.getElementsByClassName("Catalog")[0];
@@ -210,5 +270,13 @@ function isJsonString(str) {
         return false;
     }
     return true;
+}
+function jsonFromList(lis){
+    for(let i = 0; i < lis.length; i++){
+        if(isJsonString(lis[i])){
+            return lis[i];
+        }
+    }
+    return "{}";
 }
 
