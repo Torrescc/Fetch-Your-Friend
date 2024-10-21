@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f29f8286ae58d984ac0d8154d56223889d5defee
 var Pet = {
     name : "smelly" ,
     months : 37 ,
@@ -16,12 +12,8 @@ var value = {
     size : "small",
     animal : "dog",
     trait : "smelly",
-<<<<<<< HEAD
-    breed : "Husky"
-=======
     breed : "husky"
->>>>>>> f29f8286ae58d984ac0d8154d56223889d5defee
-}
+};
 
 
 function evaluateScore(value  , Pet){
@@ -29,15 +21,6 @@ function evaluateScore(value  , Pet){
     if(Pet.animal.toLowerCase() == value.animal.toLowerCase()){
         score += 3;
     }
-<<<<<<< HEAD
-    if(value.animal.toLowerCase() in Pet.breed){
-        score += 1;
-    }
-    if(value.trait.toLowerCase() in Pet.traits){
-        score += 1;
-    }
-
-=======
     for(let i =0; i < Pet.breed.length; i++){
         if(value.breed.toLowerCase() == Pet.breed[i]){
             score += 1;
@@ -48,7 +31,7 @@ function evaluateScore(value  , Pet){
             score += 1;
         }
     }
->>>>>>> f29f8286ae58d984ac0d8154d56223889d5defee
+
     // check age
     if("puppy" == value.age && Pet.months < 9){
         score += 1;
@@ -71,38 +54,27 @@ function evaluateScore(value  , Pet){
 }
 
 console.log(evaluateScore(value , Pet));
-<<<<<<< HEAD
-=======
-=======
->>>>>>> f29f8286ae58d984ac0d8154d56223889d5defee
+
 window.addEventListener("DOMContentLoaded", main);
 
 function main() {
-	let questionOne = document.getElementById("question1");
-	questionOne.addEventListener("click", faqClicked1);
+	let questions = document.getElementsByClassName("question");
+	for (let q of questions) {
+		q.addEventListener("click", qClicked);
+	}
+}
+
+function qClicked() {
+	let a = this.nextElementSibling;
+	let arrow = this.getElementsByClassName("arrow up");
 	
-	let questionTwo = document.getElementById("question2");
-	questionTwo.addEventListener("click", faqClicked2);
-	
-	let questionThree = document.getElementById("question3");
-	questionThree.addEventListener("click", faqClicked3);
+	if (a.hasAttribute("hidden")) {
+		a.removeAttribute("hidden");
+		arrow.classList.remove("up");
+		arrow.classList.add("down");
+	} else {
+		a.setAttribute("hidden", "");
+		arrow.classList.remove("down");
+		arrow.classList.add("up");
+	}
 }
-
-function faqClicked1() {
-	let answer = document.getElementById("faq1");
-	answer.removeAttribute("hidden");
-}
-
-function faqClicked2() {
-	let answer = document.getElementById("faq2");
-	answer.removeAttribute("hidden");
-}
-
-function faqClicked3() {
-	let answer = document.getElementById("faq3");
-	answer.removeAttribute("hidden");
-}
-<<<<<<< HEAD
->>>>>>> design_contacts
-=======
->>>>>>> f29f8286ae58d984ac0d8154d56223889d5defee

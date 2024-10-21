@@ -223,7 +223,13 @@ div.filters{
     text-align: center;
     display: flex;
     flex-wrap: nowrap;
+    font-family: 'Nexa Text Regular';
+    color : white;
+    
 
+}
+div.filters > div{
+    background-color: rgb(0,134,188);
 }
 div.filterList{
     display: flex;
@@ -241,7 +247,7 @@ div.name{
     background-color: rgb(192, 192, 192);
     border-radius: 10px;
     padding : 20pt;
-    
+    font-family: 'Nexa Text Regular';
 }
 /*
 #catalogbody *.Catalog{
@@ -261,6 +267,7 @@ div.pet{
     font-family: 'Times New Roman';
     padding :5pt;
     position: relative;
+    color : black;
 }
 *.pet > div{
     width : 3in;
@@ -269,6 +276,7 @@ div.character{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    color : black;
     /* to do later when you hover over add more traits */
 }
 div.trait{
@@ -289,12 +297,8 @@ div.matchedtrait{
     
 }
 
-#pageturner{
-    display: flex;
-    text-align: right;
-}
 
-/* end of stuff about pet catalog */
+
 
 /*
 working on increasing the size of the items in the catalog after looking at them
@@ -304,28 +308,48 @@ working on increasing the size of the items in the catalog after looking at them
     transition-delay: 0.5s;
 }
 
+#pageTurner{
+    font-family: 'Nexa Text Regular';
+    display: flex;
+    text-align: right;
+    justify-content: right;
+    font-size: 20pt;
+    margin : 5pt;
+}
+#pageTurner *{
+    padding : 5pt;
+    margin : 10pt;
+    background-color: rgba(0,134,188 , 1);
+    border-radius: 5px;
 
+}
 
 *.pet a img:hover{
     width: 5in;
     height: 5in;
     transition-delay: 0.5s;
 }
- 
+
+/* end of stuff about pet catalog */
 div.swipe img{
-    height : 40vh;
-    width : 40vh;
+    height : 30vh;
+    width : 30vh;
    
     /* I am RAGIng the stupid image wouldn't center*/
 }
+
+
 div.swipe{
     display: grid;
     grid-template-columns: auto;
     justify-content: center;
     text-align: center;
-    
-    background: linear-gradient(30deg , rgba(0,134,188 , 1) , rgba(0,134,188 , 0.3) , rgba(101,4,181 , 0.3) , rgba(101,4,181 , 1));
-    padding : 30pt;
+    position: fixed;
+    top: 10vh;
+    left : 20vw;
+    background: linear-gradient(30deg , rgba(0,134,188 , 1) , rgba(0,134,188 , 1) , rgba(101,4,181 , 1) , rgba(101,4,181 , 1));
+    padding-top: 2.5vw;
+    padding-bottom: 10vw;
     width : 50vw;
     height: 60vh;
     border-width: 5pt;
@@ -333,6 +357,22 @@ div.swipe{
     border-color: black;
     border-style: solid;
     margin : 40pt;
+    font-family: 'Nexa Text Regular';
+    color : white;
+
+}
+
+div.swipeinfo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+div.swipeinfo div{
+    margin : 2pt;
+    margin-left: 5pt;
+    margin-right : 5pt;
+    font-size: 10pt;
 }
 #swipedisplay{
     display: grid;
@@ -340,6 +380,7 @@ div.swipe{
     justify-content: center; 
     background-color: gray;
     width: 80vw;
+    
 }
 
 .center{
@@ -371,20 +412,15 @@ div.buttons button{
 .currentfilter{
     padding : 2pt; 
     border-width : 1pt;
-    border-color : black;
+    border-color : white;
     border-style: solid;
     border-radius : 2px;
     margin: 3pt;
-    font-size: 12pt;
+    font-size: 10pt;
     font-family: Impact, Haettenschweiler , 'Arial Narrow Bold', sans-serif;
 }
 
 /* For contact-us.html */
-
-.topOfContacts {
-	padding: 0vh 0vh;
-	margin: 0vh 0vh;
-}
 
 .contact-page {
 	background: linear-gradient(rgb(101,4,181), rgb(0,134,188));
@@ -398,9 +434,39 @@ div.buttons button{
 	text-align: center;
 }
 
-.faq-section {
+.contacts {
 	background: rgb(0,134,188);
 	color: white;
+	width: 100%;
+	border-radius: 2vh;
+	padding: 0vh 10vh;
+	text-align: center;
+}
+
+.contact-row > td {
+	font-size: 12pt;
+	padding: 3vh 1vh;
+	margin: 0.2vh 0.4vh;
+}
+
+/* For faqs.html */
+
+.faqs_page {
+	background: linear-gradient(rgb(101,4,181), rgb(0,134,188));
+	color: white;
+	text-align: center;
+}
+
+.note_faqs {
+	padding: 4vh 2vh;
+	margin: 0.2vh 0.4vh;
+	text-align: center;
+}
+
+.questions {
+	background: rgb(0,134,188);
+	color: white;
+	width: 100%;
 	border-radius: 2vh;
 	padding: 2vh 30vh;
 	margin: 0.2vh 0.4vh;
@@ -413,18 +479,30 @@ div.buttons button{
 	margin: 0.2vh 0.4vh;
 }
 
-.contacts {
-	background: rgb(0,134,188);
-	color: white;
+.answer {
+	background: white;
+	color: black;
 	border-radius: 2vh;
-	padding: 0vh 65vh;
-	text-align: center;
+	font-size: 12pt;
+	padding: 4vh 10vh;
+	margin: 0.2vh 0.4vh;
 }
 
-.contact-row > td {
-	font-size: 12pt;
-	padding: 3vh 1vh;
-	margin: 0.2vh 0.4vh;
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 0.5vh;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
 
 /* For profile.html */
@@ -435,9 +513,18 @@ div.buttons button{
 	text-align: center;
 }
 
-*.profile-row > td {
-	font-size: 14pt;
-	padding: 4vh 2vh;
+.user-info {	
+	background: rgb(0,134,188);
+	color: white;
+	width: 100%;
+	border-radius: 2vh;
+	padding: 0vh 10vh;
+	text-align: center;
+}
+
+.profile-row > td {
+	font-size: 12pt;
+	padding: 3vh 1vh;
 	margin: 0.2vh 0.4vh;
 }
 
@@ -446,14 +533,6 @@ div.buttons button{
 	margin: 0.2vh 0.4vh;
 	text-align: center;
 	font-size: 28pt;
-}
-
-.user-info {
-	background: rgb(0,134,188);
-	color: white;
-	border-radius: 2vh;
-	padding: 0vh 65vh;
-	text-align: center;
 }
 
 /* For sign-up-in.html */
