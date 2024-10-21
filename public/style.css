@@ -155,6 +155,7 @@ nav {
     flex-direction: row;
     width: 70vw;
     margin-left: 15vw;
+    margin-right: 15vw;
 }
 
 .home-content-title {
@@ -172,7 +173,7 @@ nav {
     font-size: 16px;
     font-family: 'Nexa Regular', arial, helvetica, sans-serif;
     line-height: 25px;
-    padding: 0 15px;
+    margin: 0 15px;
     font-weight: 400;
 }
 
@@ -436,9 +437,9 @@ div.buttons button{
 .contacts {
 	background: rgb(0,134,188);
 	color: white;
-	width: 100vw;
+	width: 100%;
 	border-radius: 2vh;
-	padding: 0vh 65vh;
+	padding: 0vh 10vh;
 	text-align: center;
 }
 
@@ -512,19 +513,18 @@ div.buttons button{
 	text-align: center;
 }
 
-.user-info {
+.user-info {	
 	background: rgb(0,134,188);
 	color: white;
-	display: flex;
 	width: 100%;
 	border-radius: 2vh;
-	padding: 0vh 65vh;
+	padding: 0vh 10vh;
 	text-align: center;
 }
 
-*.profile-row > td {
-	font-size: 14pt;
-	padding: 4vh 2vh;
+.profile-row > td {
+	font-size: 12pt;
+	padding: 3vh 1vh;
 	margin: 0.2vh 0.4vh;
 }
 
