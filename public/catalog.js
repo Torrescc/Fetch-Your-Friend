@@ -125,7 +125,7 @@ function getNextPetSwipe(){
 
 // adds a pet to the catalog based on the pet object it's handed
 function addPetToSwipe(pet){
-    var swipe = document.getElementById("swipedisplay");
+    var swipe = document.getElementById("swipebody");
     var newPet = document.createElement("div");
     swipe.appendChild(newPet);
     newPet.classList.add("swipe");
@@ -133,10 +133,12 @@ function addPetToSwipe(pet){
 
     
     addImage(newPet , pet.image , pet.link);
-    addName(newPet , pet.name );
-    addAge(newPet , pet.months);
-    addBio(newPet , generateBio(pet));
-    addBreeds(newPet , pet.breed);
+    var swipeInfo = addSwipeInfo(newPet);
+
+    addName(swipeInfo , pet.name );
+    addAge(swipeInfo , pet.months);
+    addBio(swipeInfo , generateBio(pet));
+    addBreeds(swipeInfo , pet.breed);
     addTraits(newPet , pet.traits);
     return newPet;
 }
@@ -180,6 +182,12 @@ function addPetToSavedPets(pet){
 
 
 // different elements to be added when creating a pet display
+function addSwipeInfo(container){
+    let div = document.createElement("div");
+    container.appendChild(div);
+    div.setAttribute("class" , "swipeinfo");
+    return div;
+}
 
 function addCheckButton(container){
     let button = document.createElement("button");

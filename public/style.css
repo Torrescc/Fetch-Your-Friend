@@ -348,10 +348,9 @@ div.swipe{
     top: 10vh;
     left : 20vw;
     background: linear-gradient(30deg , rgba(0,134,188 , 1) , rgba(0,134,188 , 1) , rgba(101,4,181 , 1) , rgba(101,4,181 , 1));
-    padding-top: 2.5vw;
-    padding-bottom: 10vw;
+    padding : 5pt;
     width : 50vw;
-    height: 60vh;
+    height: 75vh;
     border-width: 5pt;
     border-radius: 5px;
     border-color: black;
@@ -359,8 +358,23 @@ div.swipe{
     margin : 40pt;
     font-family: 'Nexa Text Regular';
     color : white;
-
 }
+
+@media (width < 600px){
+
+    div.swipe{
+        left : -2.5vw;
+        width : 80vw;
+        height : 75vh;
+    }
+    div.buttons{
+        height: 0px;
+        width: 0px;
+        overflow: hidden;
+    }
+    
+}
+    
 
 div.swipeinfo{
     display: flex;
@@ -375,11 +389,12 @@ div.swipeinfo div{
     font-size: 10pt;
 }
 #swipedisplay{
-    display: grid;
-    grid-template-columns: auto;
-    justify-content: center; 
+    
     background-color: gray;
     width: 80vw;
+    height : 90vh;
+    overflow: hidden;
+
     
 }
 
@@ -387,14 +402,18 @@ div.swipeinfo div{
     display: grid;
     grid-template-columns: auto;
     justify-content: center; 
+    align-items: center;
+    
 }
 #swipebody{
     background-color: rgb(171, 171, 171);
-
+    justify-content: center;
 }
 div.buttons{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    width: 80vw;
+    height: 20vh;
     
 }
 div.buttons button img{
