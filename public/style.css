@@ -438,8 +438,8 @@ div.buttons button{
 	background: rgb(0,134,188);
 	color: white;
 	width: 100%;
+	height: auto;
 	border-radius: 2vh;
-	padding: 0vh 10vh;
 	text-align: center;
 }
 
@@ -467,9 +467,8 @@ div.buttons button{
 	background: rgb(0,134,188);
 	color: white;
 	width: 100%;
+	height: auto;
 	border-radius: 2vh;
-	padding: 2vh 30vh;
-	margin: 0.2vh 0.4vh;
 	text-align: center;
 }
 
@@ -517,8 +516,8 @@ div.buttons button{
 	background: rgb(0,134,188);
 	color: white;
 	width: 100%;
+	height: auto;
 	border-radius: 2vh;
-	padding: 0vh 10vh;
 	text-align: center;
 }
 
