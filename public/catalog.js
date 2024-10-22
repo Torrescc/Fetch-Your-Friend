@@ -30,6 +30,7 @@ var savedPets = [];
 function connect(){
     document.getElementById("pageTurner").children[0].addEventListener("click" , pageDown);
     document.getElementById("pageTurner").children[2].addEventListener("click" , pageUp);
+    document.getElementById("filterbutton").addEventListener("click" , toggleFilters);
 
 }
 function pageUp(){
@@ -43,6 +44,8 @@ function pageDown(){
     }
 
 }
+
+
 // end of page turner
 
 
@@ -61,7 +64,22 @@ function addAllPets(){
        addPetToCatalog(Pet);
     }
 }
+var filtersEnabled = true;
+function toggleFilters(){
+    if(filtersEnabled){
+        filtersEnabled = false;
+        this.textContent = "enable";
+        document.getElementsByClassName("filters")[0].setAttribute("style" , "height : 0pt; width : 0pt; overflow: hidden;padding : 0pt; margin : 0pt;");
+        document.getElementById("topofCatalog").setAttribute("style" , "height : 150px");
+    }
+    else{
+        filtersEnabled = true;
+        this.textContent = "disable";
+        document.getElementsByClassName("filters")[0].setAttribute("style" , "");
+        document.getElementById("topofCatalog").setAttribute("style" , "");
 
+    }
+}
 
 // saves pets from catalog
 // the checkmarks are listening for this event
