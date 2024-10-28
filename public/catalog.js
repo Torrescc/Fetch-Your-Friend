@@ -109,6 +109,8 @@ function startAndConnectSwipe(){
     swipePointer1 = addPetToSwipe(getNextPetSwipe());
     swipePointer2 = addPetToSwipe(getNextPetSwipe());
     swipePointer3 = addPetToSwipe(getNextPetSwipe());
+    swipePointer1.addEventListener("mousemove" , moveSwipeCard);
+
     resetZaxis();
 }
 
@@ -119,6 +121,7 @@ function cycle(){
     swipePointer2 = swipePointer3;
     swipePointer3 = addPetToSwipe(getNextPetSwipe());
     resetZaxis();
+    swipePointer1.addEventListener("touchmove" , moveSwipeCard);
 }
 function resetZaxis(){
     swipePointer1.setAttribute("style" , "z-index: 3;");
@@ -126,6 +129,11 @@ function resetZaxis(){
     swipePointer3.setAttribute("style" , "z-index: 1;");
 
 }
+function moveSwipeCard( event){
+    console.log(event);
+    console.log("hello");
+}
+
 // save then cycle happens when accept
 function saveAndCycle(){
     savedPets.push(JSON.parse(jsonFromList(swipePointer1.classList)));
