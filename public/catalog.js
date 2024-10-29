@@ -1,6 +1,7 @@
 var swipePointer1;
 var swipePointer2;
 var swipePointer3;
+var entryPoint;
 var number = 1;
 
 
@@ -109,8 +110,8 @@ function startAndConnectSwipe(){
     swipePointer1 = addPetToSwipe(getNextPetSwipe());
     swipePointer2 = addPetToSwipe(getNextPetSwipe());
     swipePointer3 = addPetToSwipe(getNextPetSwipe());
-    swipePointer1.addEventListener("mousemove" , moveSwipeCard);
-
+    swipePointer1.addEventListener("touchmove" , moveSwipeCard);
+    entryPoint = null;
     resetZaxis();
 }
 
@@ -121,7 +122,9 @@ function cycle(){
     swipePointer2 = swipePointer3;
     swipePointer3 = addPetToSwipe(getNextPetSwipe());
     resetZaxis();
+    
     swipePointer1.addEventListener("touchmove" , moveSwipeCard);
+    entryPoint = null; 
 }
 function resetZaxis(){
     swipePointer1.setAttribute("style" , "z-index: 3;");
@@ -129,9 +132,24 @@ function resetZaxis(){
     swipePointer3.setAttribute("style" , "z-index: 1;");
 
 }
+var originalStyle;
+
 function moveSwipeCard( event){
-    console.log(event);
-    console.log("hello");
+    
+    if(entryPoint == null){
+        entryPoint = { 
+            x : event.touches[0].screenX,
+            y : event.touches[0].screenY
+            
+        }
+        originalStyle = swipePointer1.getAttribute("style")
+        
+    }else{
+        
+        //console.log((event.screenX - entryPoint.x) + " " + (event.screenY - entryPoint.y));
+        swipePointer1.setAttribute("style" , originalStyle +"left : " + (-0.025 * window.screen.width - entryPoint.x + event.touches[0].screenX) + "px;")
+        
+    }
 }
 
 // save then cycle happens when accept
@@ -296,7 +314,7 @@ function addTraits(container , traits){
 }
 // end of pet elements
 
-// helper function
+// helper functions for getting the JSON from a Class
 function isJsonString(str) {
     try {
         JSON.parse(str);
