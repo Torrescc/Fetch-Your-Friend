@@ -110,7 +110,12 @@ function startAndConnectSwipe(){
     swipePointer1 = addPetToSwipe(getNextPetSwipe());
     swipePointer2 = addPetToSwipe(getNextPetSwipe());
     swipePointer3 = addPetToSwipe(getNextPetSwipe());
+    if(window.screen.width < 600){
+    swipePointer1.addEventListener("touchstart" , touchStart);
+
     swipePointer1.addEventListener("touchmove" , moveSwipeCard);
+    swipePointer1.addEventListener("touchend" , touchEnd);
+    }
     entryPoint = null;
     resetZaxis();
 }
@@ -122,9 +127,13 @@ function cycle(){
     swipePointer2 = swipePointer3;
     swipePointer3 = addPetToSwipe(getNextPetSwipe());
     resetZaxis();
-    
+    if(window.screen.width < 600){
+        swipePointer1.addEventListener("touchstart" , touchStart);
+
     swipePointer1.addEventListener("touchmove" , moveSwipeCard);
-    entryPoint = null; 
+    swipePointer1.addEventListener("touchend" , touchEnd);
+    touchEnd(); 
+    }
 }
 function resetZaxis(){
     swipePointer1.setAttribute("style" , "z-index: 3;");
@@ -133,23 +142,33 @@ function resetZaxis(){
 
 }
 var originalStyle;
-
 function moveSwipeCard( event){
     
-    if(entryPoint == null){
-        entryPoint = { 
-            x : event.touches[0].screenX,
-            y : event.touches[0].screenY
-            
-        }
-        originalStyle = swipePointer1.getAttribute("style")
-        
-    }else{
+    if(entryPoint !=  null){
         
         //console.log((event.screenX - entryPoint.x) + " " + (event.screenY - entryPoint.y));
         swipePointer1.setAttribute("style" , originalStyle +"left : " + (-0.025 * window.screen.width - entryPoint.x + event.touches[0].screenX) + "px;")
+        if(entryPoint.x -event.touches[0].screenX <  window.screen.width * -.2){
+            saveAndCycle();
+        }   
+        else if(entryPoint.x -event.touches[0].screenX >  window.screen.width * .2){
+            cycle();
+        }
         
     }
+}
+function touchStart(event){
+    hasTouched = false;
+    entryPoint = { 
+        x : event.touches[0].screenX,
+        y : event.touches[0].screenY
+        
+    }
+    originalStyle = swipePointer1.getAttribute("style")
+}
+function touchEnd(){
+    swipePointer1.setAttribute("style" ,  originalStyle);
+    entryPoint = null;
 }
 
 // save then cycle happens when accept
