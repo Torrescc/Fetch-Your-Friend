@@ -228,6 +228,12 @@ div.filters{
     
 
 }
+@media(width < 600px){
+    div.filters{
+        display: block;
+        justify-content: center;
+    }
+}
 div.filters > div{
     background-color: rgb(0,134,188);
 }
@@ -371,6 +377,7 @@ div.swipe{
         height: 0px;
         width: 0px;
         overflow: hidden;
+       
     }
     
 }
