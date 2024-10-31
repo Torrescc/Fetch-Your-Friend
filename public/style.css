@@ -43,18 +43,18 @@ p {
 }
 
 nav {
-    background-color: rgb(0,134,188); /* Updated nav background */
+    background-color: rgb(0,134,188); 
     padding: 10px 20px;
     height: 120px;
     display: flex;
-    flex-direction: column; /* Stack the top and bottom sections vertically */
+    flex-direction: column;
 }
 
 .nav-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px; /* Adjust the height of the top section */
+    height: 60px; 
 }
 
 .nav-bottom {
@@ -62,7 +62,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px; /* Adjust the height of the bottom section */
+    height: 40px; 
 }
 
 @font-face {
@@ -110,7 +110,7 @@ nav {
 }
 
 .auth-buttons .button {
-    background-color: rgb(101,4,181); /* Updated button color */
+    background-color: rgb(101,4,181); 
     color: white;
     padding: 8px 15px;
     border-radius: 4px;
@@ -124,6 +124,63 @@ nav {
 }
 
 /* End of Chris Nav Section */
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    /* Keep the nav structure */
+    nav {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding: 0;
+    }
+
+    /* Top nav bar remains fixed at the top */
+    .nav-top {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgb(0,134,188);
+        padding: 10px;
+        z-index: 10;
+    }
+
+    /* Bottom nav section locked to the bottom of the screen and displayed in a row */
+    .nav-bottom,
+    .auth-buttons {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(0,134,188);
+        display: flex;
+        justify-content: space-around; 
+        padding: 10px 0;
+        z-index: 10;
+    }
+
+    /* Arrange nav links horizontally */
+    .nav-links {
+        flex-direction: row; 
+        justify-content: space-around; 
+        width: 80%; 
+    }
+
+    .nav-links li {
+        margin: 0 5px; 
+    }
+
+    /* Adjust sign-in button placement */
+    .auth-buttons .button {
+        margin: 0;
+        padding: 10px 20px;
+    }
+
+    /* Body padding for fixed nav bars */
+    body {
+        padding-top: 70px; 
+        padding-bottom: 60px; 
+    }
+}
 
 /* Home Page */
 
@@ -143,6 +200,7 @@ nav {
     background-color: white;
     margin: 0;
     padding: 0;
+    padding-bottom: 2vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -186,7 +244,90 @@ nav {
     overflow: hidden;
     padding: 0 15px;
     text-overflow: ellipsis;
+    text-align: center;
 }
+
+.content-description {
+    text-align: center;
+}
+
+.learn-more {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 2vh;
+}
+
+.learn-more-link {
+    color: rgb(101,4,181);
+    border: 2px solid rgb(101,4,181);
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.learn-more-link:hover {
+    background-color: rgb(101,4,181);
+    color: white; 
+}
+
+
+/* Mobile Home Page styles */
+@media (max-width: 768px) {
+    /* Ensure the main image fits within the screen width */
+    .home-image img {
+        max-height: 200px;
+        width: 100%;
+        object-fit: cover;
+        margin: 0;
+    }
+
+    /* Adjust home content title */
+    .home-content-title {
+        font-size: 24px;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+
+    /* Make content boxes stack vertically and fill the screen width */
+    .content-container {
+        flex-direction: column;
+        width: 90%;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    /* Adjust individual content sections for better readability */
+    .home-content {
+        font-size: 14px;
+        margin-bottom: 15px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    /* Center-align titles in content sections */
+    .content-title {
+        font-size: 22px;
+        padding: 5px;
+    }
+
+    .learn-more {
+        padding: 0;
+    }
+
+    /* Adjust padding and margins for buttons and links */
+    .learn-more-link {
+        font-size: 16px;
+        padding: 8px 10px;
+        display: inline-block;
+        margin-top: 10px;
+    }
+}
+
 
 /* End of Home Page Section */
 
