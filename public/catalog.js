@@ -1,6 +1,7 @@
 var swipePointer1;
 var swipePointer2;
 var swipePointer3;
+var entryPoint;
 var number = 1;
 
 
@@ -30,6 +31,7 @@ var savedPets = [];
 function connect(){
     document.getElementById("pageTurner").children[0].addEventListener("click" , pageDown);
     document.getElementById("pageTurner").children[2].addEventListener("click" , pageUp);
+    document.getElementById("filterbutton").addEventListener("click" , toggleFilters);
 
 }
 function pageUp(){
@@ -43,6 +45,8 @@ function pageDown(){
     }
 
 }
+
+
 // end of page turner
 
 
@@ -61,7 +65,22 @@ function addAllPets(){
        addPetToCatalog(Pet);
     }
 }
+var filtersEnabled = true;
+function toggleFilters(){
+    if(filtersEnabled){
+        filtersEnabled = false;
+        this.textContent = "enable";
+        document.getElementsByClassName("filters")[0].setAttribute("style" , "height : 0pt; width : 0pt; overflow: hidden;padding : 0pt; margin : 0pt;");
+        document.getElementById("topofCatalog").setAttribute("style" , "height : 150px");
+    }
+    else{
+        filtersEnabled = true;
+        this.textContent = "disable";
+        document.getElementsByClassName("filters")[0].setAttribute("style" , "");
+        document.getElementById("topofCatalog").setAttribute("style" , "");
 
+    }
+}
 
 // saves pets from catalog
 // the checkmarks are listening for this event
@@ -91,6 +110,13 @@ function startAndConnectSwipe(){
     swipePointer1 = addPetToSwipe(getNextPetSwipe());
     swipePointer2 = addPetToSwipe(getNextPetSwipe());
     swipePointer3 = addPetToSwipe(getNextPetSwipe());
+    if(window.screen.width < 600){
+    swipePointer1.addEventListener("touchstart" , touchStart);
+
+    swipePointer1.addEventListener("touchmove" , moveSwipeCard);
+    swipePointer1.addEventListener("touchend" , touchEnd);
+    }
+    entryPoint = null;
     resetZaxis();
 }
 
@@ -101,6 +127,13 @@ function cycle(){
     swipePointer2 = swipePointer3;
     swipePointer3 = addPetToSwipe(getNextPetSwipe());
     resetZaxis();
+    if(window.screen.width < 600){
+        swipePointer1.addEventListener("touchstart" , touchStart);
+
+    swipePointer1.addEventListener("touchmove" , moveSwipeCard);
+    swipePointer1.addEventListener("touchend" , touchEnd);
+    touchEnd(); 
+    }
 }
 function resetZaxis(){
     swipePointer1.setAttribute("style" , "z-index: 3;");
@@ -108,6 +141,36 @@ function resetZaxis(){
     swipePointer3.setAttribute("style" , "z-index: 1;");
 
 }
+var originalStyle;
+function moveSwipeCard( event){
+    
+    if(entryPoint !=  null){
+        
+        //console.log((event.screenX - entryPoint.x) + " " + (event.screenY - entryPoint.y));
+        swipePointer1.setAttribute("style" , originalStyle +"left : " + (-0.025 * window.screen.width - entryPoint.x + event.touches[0].screenX) + "px;")
+        if(entryPoint.x -event.touches[0].screenX <  window.screen.width * -.2){
+            saveAndCycle();
+        }   
+        else if(entryPoint.x -event.touches[0].screenX >  window.screen.width * .2){
+            cycle();
+        }
+        
+    }
+}
+function touchStart(event){
+    hasTouched = false;
+    entryPoint = { 
+        x : event.touches[0].screenX,
+        y : event.touches[0].screenY
+        
+    }
+    originalStyle = swipePointer1.getAttribute("style")
+}
+function touchEnd(){
+    swipePointer1.setAttribute("style" ,  originalStyle);
+    entryPoint = null;
+}
+
 // save then cycle happens when accept
 function saveAndCycle(){
     savedPets.push(JSON.parse(jsonFromList(swipePointer1.classList)));
@@ -125,7 +188,7 @@ function getNextPetSwipe(){
 
 // adds a pet to the catalog based on the pet object it's handed
 function addPetToSwipe(pet){
-    var swipe = document.getElementById("swipedisplay");
+    var swipe = document.getElementById("swipebody");
     var newPet = document.createElement("div");
     swipe.appendChild(newPet);
     newPet.classList.add("swipe");
@@ -133,10 +196,12 @@ function addPetToSwipe(pet){
 
     
     addImage(newPet , pet.image , pet.link);
-    addName(newPet , pet.name );
-    addAge(newPet , pet.months);
-    addBio(newPet , generateBio(pet));
-    addBreeds(newPet , pet.breed);
+    var swipeInfo = addSwipeInfo(newPet);
+
+    addName(swipeInfo , pet.name );
+    addAge(swipeInfo , pet.months);
+    addBio(swipeInfo , generateBio(pet));
+    addBreeds(swipeInfo , pet.breed);
     addTraits(newPet , pet.traits);
     return newPet;
 }
@@ -180,6 +245,12 @@ function addPetToSavedPets(pet){
 
 
 // different elements to be added when creating a pet display
+function addSwipeInfo(container){
+    let div = document.createElement("div");
+    container.appendChild(div);
+    div.setAttribute("class" , "swipeinfo");
+    return div;
+}
 
 function addCheckButton(container){
     let button = document.createElement("button");
@@ -262,7 +333,7 @@ function addTraits(container , traits){
 }
 // end of pet elements
 
-// helper function
+// helper functions for getting the JSON from a Class
 function isJsonString(str) {
     try {
         JSON.parse(str);
