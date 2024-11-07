@@ -24,7 +24,7 @@ function calculateClicked(event) {
 }
 
 /* I got the calculations for dogs from this website: https://www.akc.org/expert-advice/health/how-to-calculate-dog-years-to-human-years/ */
-/* I got the calculations for cats from this website: https://www.almanac.com/cat-age-chart-cat-years-human-years
+/* I got the calculations for cats from this website: https://www.almanac.com/cat-age-chart-cat-years-human-years */
 /* I used linear regression via Desmos to get these equations */
 function calculateAge(species, size, age) {
 	if (species == "dog") {
