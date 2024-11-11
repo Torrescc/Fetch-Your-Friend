@@ -352,12 +352,12 @@ function funnyBio(pet){
     let numberOfFunnyBios = 8; 
     switch(Math.floor((Math.random() * numberOfFunnyBios) )){
         case 0:
-            return "pros and cons of adopting of me. Pro: you will own a" + pet.animal + "Cons: you will be adoptiong me with all my" + pet.traits[Math.floor((Math.random() * pet.traits.length))];
+            return "pros and cons of adopting of me. Pro: you will own a" + pet.animal + "Cons: you will be adoptiong me with all my " + pet.traits[Math.floor((Math.random() * pet.traits.length))] + "ness";
         case 1:
             
             return "Just looking for something super casual, like "+ thingsYouCanDoWithPets(pet)+ " all day and being your bestfriend. Nothing serious!";
         case 2:
-            petAchievments = "I have won a beauty pagent";
+            petAchievments = "I have won a beauty pageant";
             return "Two truths and a lie: "+ petAchievments + ", I am an " +  pet.traits[Math.floor((Math.random() * pet.traits.length))] + " " + pet.animal + " , one of these is a lie.";
         case 3:
             let scaryAnimal = "spiders";
@@ -450,7 +450,7 @@ function foodRelatedBios(pet){
         case 0: 
             return "Looking for the pepperoni to my pizza, the peanut butter to my jelly, the cheese to my crackers. Oh dang… now I’m hungry.";
         case 1: 
-            return "I am not asking for much , only that you feed me water me and, entertain me";
+            return "I am not asking for much , only that you feed me and, entertain me";
         case 2:
             return "Costco hot dog enthusiast.";
         case 3:
