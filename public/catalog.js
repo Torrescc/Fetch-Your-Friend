@@ -23,6 +23,7 @@ var Pet = {
     traits : ["smelly" , "smart" , "playful" , "white" , "loyal"],
     link : "https://example.org",
     image : "Dog.jpeg",
+    gender : "boy",
 };
 
 var savedPets = [];
@@ -308,14 +309,178 @@ function addBreeds(container , breeds){
 function addBio(container , bio){
     let bioDiv = document.createElement("div");
     bioDiv.setAttribute('class' , 'bio');
-    bioDiv.textContent = bio;
+    bioDiv.innerHTML = bio;
     container.appendChild(bioDiv);
 }
 function generateBio(pet){
     let trait = pet.traits[Math.floor(Math.random() * pet.traits.length)];
     
-    return "hi am " + pet.name + " and I am " + trait;
+    return funnyBio(pet);
 }
+
+//for generating bios returns a string that matches the description
+function thingsYouCanDoWithPets(pet){
+    thingsYouCanDoWithPetsList = ["pets" , "snuggles" , "cuddles" , "playing" ];
+    if(pet.animal == "dog"){
+        thingsYouCanDoWithPetsList.push("kisses");
+    }
+    
+    return thingsYouCanDoWithPetsList[Math.floor(Math.random() * thingsYouCanDoWithPetsList.length)];
+}
+function impressiveHumanThing(pet){
+    things = ["greatest treats"];
+    if(pet.animal == "cat"){
+        things.push("biggest cat towers");
+    }
+    else if(pet.animal == "dog"){
+        things.push("largest yard");
+        things.push("largest stick");
+    }
+    return things[Math.floor(Math.random() * things.length)];
+}
+function noiseMade(pet){
+    if(pet.animal == "dog"){
+        return "bark";
+    }
+    if(pet.animal == "cat"){
+        return "meow";
+    }
+    return "growl";
+
+}
+function funnyBio(pet){
+    let numberOfFunnyBios = 8; 
+    switch(Math.floor((Math.random() * numberOfFunnyBios) )){
+        case 0:
+            return "pros and cons of adopting of me. Pro: you will own a" + pet.animal + "Cons: you will be adoptiong me with all my" + pet.traits[Math.floor((Math.random() * pet.traits.length))];
+        case 1:
+            
+            return "Just looking for something super casual, like "+ thingsYouCanDoWithPets(pet)+ " all day and being your bestfriend. Nothing serious!";
+        case 2:
+            petAchievments = "I have won a beauty pagent";
+            return "Two truths and a lie: "+ petAchievments + ", I am an " +  pet.traits[Math.floor((Math.random() * pet.traits.length))] + " " + pet.animal + " , one of these is a lie.";
+        case 3:
+            let scaryAnimal = "spiders";
+            return "Minimum requirements: must get rid of the " + scaryAnimal + ". ";
+        case 4:
+            return " Looking for that special someone to help me steal the Declaration of Independence.";
+        case 5:
+            return "Costco hot dog enthusiast.";
+        case 6:
+            return "Swipe right if you go to therapy";
+        case 7:
+        
+            return "must have the world's " + impressiveHumanThing(pet);
+        case 8:
+            return "I am not asking for much , only that you feed me water me and, entertain me";
+        default:
+            return "";
+    } 
+}
+function flirtyBio(pet){
+    let numberOfFlirtyBios = 4;
+    switch(Math.floor((Math.random() * numberOfFlirtyBios) )){
+        case 0:
+            return "looking for a reason to no longer be on this website and hopefully you're it";
+        case 1:
+            return "On a scale from one to food dropped on the ground: how free are you tonight?";
+        case 2:
+            "if you like my profile that means I have to be adopted. Right?"
+        case 3:
+            return "Swipe right if you can handle impromptu adventures and toys in silly places";
+        default:
+            return "";
+    }
+}
+function activeBio(pet){
+    let numberOfActiveBios = 4;
+    switch(Math.floor((Math.random() * numberOfActiveBios) )){
+        case 0:
+            return "I like long walks on the beach and other fun activities!";
+        case 1:
+            return "Looking for an adventurous human";
+        case 2:
+            return "Fitness enthusiast who enjoys running outside and the occasional sniffing session";
+        case 3:
+            return "my special talent is that my tail can wag at mach 5";
+        
+        default:
+            return "";
+    }
+}
+function confidentBio(pet){
+    let numberOfConfidentBios = 5;
+    switch(Math.floor((Math.random() * numberOfConfidentBios) )){
+        case 0:
+            return "you deserve good things I am one of them";
+        case 1:
+            return "I am here now what are your other two wishes?";
+        case 2:
+            return "I love me and you should too";
+        case 3:
+            return "adopting me is like adopting the most fun " + pet.animal + " and the most humble too";
+        case 4:
+            return "let me know when your picking me up" ;
+        default:
+            return "";
+        
+    }
+}
+function miscleanousBios(pet){
+    return "Hi i am " + pet.name + " and I need a parent";
+}
+function cleverBios(pet){
+    let numofcleverBios = 3
+    switch(Math.floor((Math.random() * numofcleverBios) )){
+    case 0:
+        return 'Trying Fetch Your Friends out because '+ noiseMade(pet) + 'ing "I love you" to strangers does not seem to be working.'
+    case 1:
+        return "do you like my fur? it's made of adoptable " + pet.animal + " materials"
+    case 2:
+        return  "I'm all about good vibes and even better cuddles. Care to join?"
+    case 3:
+        return "Now taking applications for a human. Must be certified in cuddling and telling me I’m a good " + pet.gender + ". Swipe right to inquire within."
+    default:
+        return "";
+    }
+}
+function foodRelatedBios(pet){
+    let numoffoodBios = 4;
+    switch(Math.floor((Math.random() * numoffoodBios) )){
+        case 0: 
+            return "Looking for the pepperoni to my pizza, the peanut butter to my jelly, the cheese to my crackers. Oh dang… now I’m hungry.";
+        case 1: 
+            return "I am not asking for much , only that you feed me water me and, entertain me";
+        case 2:
+            return "Costco hot dog enthusiast.";
+        case 3:
+            return "I am searching for someone to share snacks with";
+        default:
+            return "";
+
+    }
+}
+function sillyBios(pet){
+    let numofBios = 2;
+    switch(Math.floor(Math.random() * numofBios)){
+        case 0:
+            return "I'm not a photographer, but I can pretty much picture us together... in matching halloween costumes";
+        case 1:
+            return "I'm just a small-town " + pet.gender + ", living in a lonely world. let's take a midnight train going to adoption";
+        default:
+            return "";
+    }
+}
+function lowEnergyBios(pet){
+    let numofBios = 1;
+    switch(Math.floor(Math.random() * numofBios)){
+        case 0:
+            return "passionate about sleeping and days with zero plans";
+        default:
+            return "";
+    }
+}
+
 
 function addTraits(container , traits){
     let divTraitList = document.createElement("div");
