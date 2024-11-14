@@ -605,6 +605,33 @@ div.buttons button{
     font-family: Impact, Haettenschweiler , 'Arial Narrow Bold', sans-serif;
 }
 
+/* For age-calculator.html */
+
+.calculator-page {
+	background: linear-gradient(rgb(101,4,181), rgb(0,134,188));
+	color: white;
+}
+
+.calculator {
+	background: rgb(0,134,188);
+	color: white;
+	width: 100%;
+	height: auto;
+	border-radius: 2vh;
+	text-align: center;
+}
+
+.entry {
+	font-size: 12pt;
+	padding: 3vh 1vh;
+	margin: 0.2vh 0.4vh;
+}
+
+#calculatebutton {
+	padding: 1vh 1vh;
+	font-size: 20pt;
+}
+
 /* For contact-us.html */
 
 .contact-page {

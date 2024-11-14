@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Age Calculator</title>
+	<meta charset="UTF-8">
+	
+	<link href="style.css" rel="stylesheet" type = "text/css">
+	<script src="calculator.js"></script>
+</head>
+<body class="calculator-page">
+	<nav>
+		<!-- Nav Top Div -->
+		<div class="nav-top">
+			<p class="site-name"><a href="./index.html">Fetch Your Friend</a></p>
+			<div class="auth-buttons">
+				<a href="./sign-up-in.html" class="button">Sign In / Sign Up</a>
+			</div>
+		</div>
+
+		<!-- Nav Bottom Div -->
+		<div class="nav-bottom">
+			<ul class="nav-links">
+				<li><a href="./catalog.html">Catalog</a></li>
+				<li><a href="./swipe.html">Swipe</a></li>
+				<li><a href="./contact-us.html">Contact</a></li>
+			</ul>
+		</div>
+	</nav>
+	
+	<h2 class = "head-title">Pet Age Calculator</h2>
+	
+	<main class = "calculator">
+		<p class="entry">
+			<label for="species">Enter your pet's species (e.g. dog, cat):</label>
+			<input type="text" id="species" name="species" required>
+		</p>
+		<p class="entry">
+			<label for="size">Enter your pet's relative size (small, medium, or large):</label>
+			<input type="text" id="size" name="size" required>
+		</p>
+		<p class="entry">
+			<label for="age">Enter your pet's age in human years:</label>
+			<input type="text" class="digits" id="age" name="age" required>
+		</p>
+		
+		<button type="button" id="calculatebutton">Calculate Pet's Age</button>
+		
+		<p class="entry" id="calculated-age"></p>
+	</main>
+</body>
+</html>
