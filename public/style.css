@@ -756,13 +756,24 @@ div.buttons button{
 	text-align: center;
 }
 
-*.sign-text {
+.sign-header {
+	padding-top: 5vh;
+	font-weight: bold;
+}
+
+.sign-text {
 	background: rgb(0,134,188);
 	color: white;
 	border-radius: 2vh;
 	padding: 2vh 3vh;
 	margin: 0.2vh 0.4vh;
 	text-align: left;
+}
+
+.sign-error {
+	color: rgb(173,0,0);
+	padding: 0.5vh;
+	margin: 0;
 }
 
 /* End of sign-up-in.html */
