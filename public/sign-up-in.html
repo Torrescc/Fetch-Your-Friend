@@ -10,6 +10,8 @@
     <title>Sign-up</title>
 	
 	<link href="style.css" rel="stylesheet" type = "text/css">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="sign-up-in.js"></script>
 </head>
 <body class="sign-up-in">
 	<h2>Sign In/Sign Up</h2>
@@ -29,7 +31,12 @@
 			<div class="content-boxes"></div>
 		</div>
 		
-		<p><b>Sign up to view pets!</b></p>
+		<p class="sign-header">Sign up to view pets!</p>
+		
+		<div class="sign-error">
+			<p id="account_error_msg" hidden>Invalid information; please try again</p>
+		</div>
+		
 		<form action="index-logged-in.html" method="GET">
 			<label for "name">Enter Name (First and Last):</label>
 			<input type="text" id="name" name="name" size="24" required><br>
@@ -41,16 +48,21 @@
 			<input type="text" id="pass" name="pass" size="24" required><br>
 			<label for "confirm">Confirm New Password:</label>
 			<input type="text" id="confirm" name="confirm" size="24" required><br>
-			<input type="submit" value="Create Account"><br>
+			<input type="submit" id="createaccount" value="Create Account"><br>
 		</form>
 		
-		<br><br><br><p><b>Already have an account? Sign in!</b></p>
+		<p class="sign-header">Already have an account? Sign in!</p>
+		
+		<div class="sign-error">
+			<p id="sign_error_msg" hidden>Invalid username or password; please try again</p>
+		</div>
+		
 		<form action="index-logged-in.html" method="GET">
 			<label for "existuser">Enter Username:</label>
 			<input type="text" id="existuser" name="existuser" size="24" required><br>
 			<label for "existpass">Enter Password:</label>
 			<input type="password" id="existpass" name="existpass" size="10" maxlength="10" required><br>
-			<input type="submit" value="Sign In"><br>
+			<input type="submit" id="signin" value="Sign In"><br>
 		</form>
 	</section>
 	
