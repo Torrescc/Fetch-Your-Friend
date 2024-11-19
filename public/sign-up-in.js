@@ -21,6 +21,7 @@ function createClicked(event) {
 	
 	// How to check if variables are valid size?
 	
+	localStorage.setItem("signed_in", TRUE);
 	window.location.replace("index-logged-in.html");
 }
 
@@ -31,6 +32,7 @@ function signInClicked(event) {
 	
 	if (username === localStorage.getItem("user") && userpass === localStorage.getItem("password")) {
 		document.getElementById("sign_error_msg").style.visibility = "hidden";
+		localStorage.setItem("signed_in", TRUE);
 		window.location.replace("index-logged-in.html");
 	} else {
 		document.getElementById("sign_error_msg").style.visibility = "visible";
