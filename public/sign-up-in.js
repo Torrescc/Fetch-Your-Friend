@@ -9,6 +9,7 @@ function main() {
 
 function createClicked(event) {
 	console.log("Create account button clicked");
+	localStorage.setItem("signed_in", FALSE);
 	localStorage.setItem("user ID", 0);
 	let name = document.getElementById("name").value;
 	localStorage.setItem("name", name);
@@ -27,6 +28,7 @@ function createClicked(event) {
 
 function signInClicked(event) {
 	console.log("Sign in button clicked);
+	localStorage.setItem("signed_in", FALSE);
 	let username = document.getElementById("existuser").value;
 	let userpass = document.getElementById("existpass").value;
 	
