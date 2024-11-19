@@ -8,7 +8,6 @@ var number = 1;
 // checks which function we are using
 let url = window.location.href.slice(window.location.href.lastIndexOf("/")+1 , window.location.href.lastIndexOf("?"));
 if(url == "catalog.html" || url == "catalog.htm"){
-    window.addEventListener("DOMContentLoaded" , addAllPets);
     window.addEventListener("DOMContentLoaded", connect);
 }
 if(url ==  "swipe.htm" || url == "swipe.html"){
@@ -16,7 +15,7 @@ if(url ==  "swipe.htm" || url == "swipe.html"){
 }
 var Pet = {
     name : "smelly" ,
-    months : 37 ,
+    age : "37" ,
     pounds : 60 ,
     animal : "dog" ,
     breed : ["germanshepard" ,"husky"] ,
@@ -62,8 +61,7 @@ function addAllPets(){
     }
     // add them back in based on page number
     for(let i = 0; i < 40; i++){
-        Pet.name = "smelly" + (i + 40 * (Number(document.getElementById("pageNumber").textContent) - 1)); // for testing
-       addPetToCatalog(Pet);
+       addPetToCatalog(createPetObject());
     }
 }
 var filtersEnabled = true;
@@ -200,7 +198,7 @@ function addPetToSwipe(pet){
     var swipeInfo = addSwipeInfo(newPet);
 
     addName(swipeInfo , pet.name );
-    addAge(swipeInfo , pet.months);
+    addAge(swipeInfo , pet.age);
     addBio(swipeInfo , generateBio(pet));
     addBreeds(swipeInfo , pet.breed);
     addTraits(newPet , pet.traits);
@@ -218,7 +216,7 @@ function addPetToCatalog(pet){
     addCheckButton(newPet);
     addImage(newPet , pet.image , pet.link);
     addName(newPet , pet.name );
-    addAge(newPet , pet.months);
+    addAge(newPet , pet.age);
     addBio(newPet , generateBio(pet));
     addBreeds(newPet , pet.breed);
     addTraits(newPet , pet.traits);
@@ -231,7 +229,7 @@ function addPetToSavedPets(pet){
     
     addImage(newPet , pet.image , pet.link);
     addName(newPet , pet.name );
-    addAge(newPet , pet.months);
+    addAge(newPet , pet.age);
     addBio(newPet , generateBio(pet));
     addBreeds(newPet , pet.breed);
     addTraits(newPet , pet.traits);
@@ -277,16 +275,10 @@ function addName(container , name){
     nameDiv.textContent = name;
     container.appendChild(nameDiv);
 }
-function addAge(container , months){
+function addAge(container , age){
     let ageDiv = document.createElement("div");
     ageDiv.setAttribute("class" , "age");
-    let age = "";
-    if(months > 18){
-        age = Math.floor(months / 12) +" years";
-    }
-    else{
-        age = months +" months"
-    }
+    
     ageDiv.textContent = age;
     container.appendChild(ageDiv);
 }
