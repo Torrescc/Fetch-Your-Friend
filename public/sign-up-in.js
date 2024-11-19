@@ -20,6 +20,8 @@ function createClicked(event) {
 	localStorage.setItem("password", pass);
 	
 	// How to check if variables are valid size?
+	
+	window.location.replace("index-logged-in.html");
 }
 
 function signInClicked(event) {
