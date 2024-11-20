@@ -62,6 +62,7 @@ function addAllPets(){
     // add them back in based on page number
     for(let i = 0; i < 40; i++){
         let s =createPetObject();
+
        addPetToCatalog(JSON.parse(s));
     }
 }

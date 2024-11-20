@@ -54,7 +54,7 @@ $(document).ready(function () {
 
 
 var lovelyWords = [ "lovely" , "loving" , "care" , "caring" , "friends" , "friend" , "friendly" ,"lover" , "kiss" , "kisses" , "cu"];
-var lovelysynonyms = [ "loving" , "caring" , "friendly" , "kind" , "warm hearted"];
+var lovelysynonyms = [ "loving" , "caring" , "friendly" , "kind" , "warmhearted"];
 
 var activeWords = ["adventurous" , "adventure" , "active" , "play" , "playful" ,"playing" , "played" , "yard" , "high" , "energy" , "high-energy"];
 var activesynonyms = ["adventurous" , "active" , "playful" , "high-energy"];
@@ -67,7 +67,7 @@ var confidentWords = ["confident" , "hard-working" , "protective" , "proud" , "c
 var confidentsynonyms = ["confident" , "hard-working" , "protective" , "proud" , "courageous"];
 
 var foodieWords = ["dinnertime" , "dinner" , "food" , "foodie" , "dogfood" , "hungry" , "appetite" , "gourmet" , "catfood"]
-var foodiesynonyms = ["gluttonous" , "foodie" ,"food lover" , "food enjoyer" , "gourmet"];
+var foodiesynonyms = ["gluttonous" , "foodie" ,"food_lover" , "food_enjoyer" , "gourmet"];
 
 
 function createPetObject(){
@@ -76,7 +76,7 @@ function createPetObject(){
         newPetfromAPI = pets[currentPet++];
     }
     else{
-        return Pet;
+        return JSON.stringify(Pet);
     }
     let newGender;
     if(newPetfromAPI.attributes.sex = "Male"){
@@ -121,7 +121,6 @@ function createPetObject(){
         }
     }
 
-    console.log(returnedPet);
     return JSON.stringify(returnedPet);
 
 }
@@ -140,7 +139,7 @@ function GetTraits(description){
 
     var traits = [];
 
-    for(let i =0 ; i < wordsfound; i++){
+    for(let i =0 ; i < wordsfound.length; i++){
        if(lovelyWords.includes(wordsfound[i])){
         lovelyPoints += 1;
        }
@@ -200,7 +199,6 @@ function GetTraits(description){
             traits.push(funny.pop());
         }else if(trait  == "confident"){
             confidentPoints -= 1;
-            console.log(confident);
             traits.push(confident.pop());
         }
         else if(trait == "active"){
