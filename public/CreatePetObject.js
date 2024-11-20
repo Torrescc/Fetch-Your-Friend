@@ -1,6 +1,6 @@
-var pets;
+var pets = [];
 var currentPet =0;
-
+var pageAPINumber = 1;
 
 var Pet = {
     name : "smelly" ,
@@ -15,11 +15,9 @@ var Pet = {
 };
 
 
-$(document).ready(function () {
+function addMorePetsFromAPI(){
     const apiKey = '4VxhkxM5';
     const endpoint = 'https://api.rescuegroups.org/v5/public/animals/search/';
-
-    // Define parameters for the API call
     const requestData = {
         headers: {
             "Content-Type": "application/vnd.api+json",
@@ -30,7 +28,9 @@ $(document).ready(function () {
                 type: "animals",
                 attributes: {
                     species: "dog", // Filter for dogs; change as needed
-                    status: "Available"
+                    status: "Available",
+                    page : pageAPINumber++
+
                 }
             }
         }),
@@ -38,10 +38,17 @@ $(document).ready(function () {
     };
     $.ajax(endpoint, requestData)
     .done(response => {
-        pets = response.data;
+        pets = pets.concat(createListPetObjects(response.data));
         console.log(pets);
-        if(url == "catalog.html" || url == "catalog.htm"){ addAllPets(); }
-        createPetObject();
+        if((url == "catalog.html" || url == "catalog.htm")){ 
+            if(pets.length > pageNumber * 40){
+                addAllPets();
+            }else{
+                addMorePetsFromAPI();
+            }
+            //saveAs(JSON.stringify(pets) , "pets.txt");
+        }
+
 
     })
     .fail(error => {
@@ -49,9 +56,6 @@ $(document).ready(function () {
         $('#pet-list').append("<p>Sorry, we couldn't load the pets right now.</p>");
     });
 }
-);
-
-
 
 var lovelyWords = [ "lovely" , "loving" , "care" , "caring" , "friends" , "friend" , "friendly" ,"lover" , "kiss" , "kisses" , "cu"];
 var lovelysynonyms = [ "loving" , "caring" , "friendly" , "kind" , "warmhearted"];
@@ -68,6 +72,75 @@ var confidentsynonyms = ["confident" , "hard-working" , "protective" , "proud" ,
 
 var foodieWords = ["dinnertime" , "dinner" , "food" , "foodie" , "dogfood" , "hungry" , "appetite" , "gourmet" , "catfood"]
 var foodiesynonyms = ["gluttonous" , "foodie" ,"food_lover" , "food_enjoyer" , "gourmet"];
+
+
+function createListPetObjects(array){
+    returnedArray =[];
+    for(let i = 0; i < array.length; i++ ){
+        returnedArray.push(createPetObjectFrom(array[i]))
+    }
+    return returnedArray;
+
+}
+function createPetObjectFrom(newPetfromAPI){
+    
+   
+    let newGender;
+    if(newPetfromAPI.attributes.sex = "Male"){
+        newGender = "boy"
+    }
+    else{
+        newGender = "girl"
+    }
+    let newAnimal = "";
+    let animalId = newPetfromAPI.relationships.species.data[0].id
+    if(animalId == "8"){
+        newAnimal = "dog";
+    }
+    else if(animalId == "3"){
+        newAnimal = "cat";
+    }
+    else{
+        newAnimal = "other";
+    }
+    
+    let returnedPet = {
+        name : newPetfromAPI.attributes.name, 
+        gender : newGender , 
+        breed : [newPetfromAPI.attributes.breedPrimary , newPetfromAPI.attributes.breedSecondary],
+        age : newPetfromAPI.attributes.ageString , 
+        image : newPetfromAPI.attributes.pictureThumbnailUrl , 
+        pounds : newPetfromAPI.sizeCurrent ,
+        traits : GetTraits(makeAllLower(newPetfromAPI.attributes.descriptionText)),
+        link : newPetfromAPI.attributes.url ,
+        animal : newAnimal,
+    }
+    for(var propt in returnedPet){
+        if(returnedPet[propt] != undefined && propt != "traits" && propt != "breed"){
+            returnedPet[propt] = returnedPet[propt].replaceAll(" " , "_").toLowerCase();
+        }
+        
+        
+    }
+    for(let i = 0; i < returnedPet["breed"].length; i++){
+        if(returnedPet["breed"][i] != undefined){
+            returnedPet["breed"][i] = returnedPet["breed"][i].replaceAll(" " , "_").toLowerCase();
+        }else{
+            if(i =1){
+                returnedPet["breed"] = returnedPet["breed"].slice(0 , 1);
+            }
+            else{
+                returnedPet["breed"][i] = "";
+            }
+        }
+    }
+
+    return JSON.stringify(returnedPet);
+
+}
+
+
+
 
 
 function createPetObject(){
@@ -118,6 +191,13 @@ function createPetObject(){
     for(let i = 0; i < returnedPet["breed"].length; i++){
         if(returnedPet["breed"][i] != undefined){
             returnedPet["breed"][i] = returnedPet["breed"][i].replaceAll(" " , "_").toLowerCase();
+        }else{
+            if(i =1){
+                returnedPet["breed"] = returnedPet["breed"].slice(0 , 1);
+            }
+            else{
+                returnedPet["breed"][i] = "";
+            }
         }
     }
 

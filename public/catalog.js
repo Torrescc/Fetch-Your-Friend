@@ -3,12 +3,13 @@ var swipePointer2;
 var swipePointer3;
 var entryPoint;
 var number = 1;
-
+var pageNumber = 1;
 
 // checks which function we are using
 let url = window.location.href.slice(window.location.href.lastIndexOf("/")+1 , window.location.href.lastIndexOf("?"));
 if(url == "catalog.html" || url == "catalog.htm"){
     window.addEventListener("DOMContentLoaded", connect);
+    addMorePetsFromAPI();
 }
 if(url ==  "swipe.htm" || url == "swipe.html"){
     window.addEventListener("DOMContentLoaded" , startAndConnectSwipe);
@@ -35,13 +36,13 @@ function connect(){
 
 }
 function pageUp(){
+    pageNumber +=1;
     document.getElementById("pageNumber").textContent =  Number(document.getElementById("pageNumber").textContent) + 1;
-    addAllPets();
 }
 function pageDown(){
     if(Number(document.getElementById("pageNumber").textContent) > 1){
         document.getElementById("pageNumber").textContent =  Number(document.getElementById("pageNumber").textContent) - 1;
-        addAllPets();
+        pageNumber -= 1;
     }
 
 }
@@ -60,8 +61,8 @@ function addAllPets(){
         catalog.children[0].remove();
     }
     // add them back in based on page number
-    for(let i = 0; i < 40; i++){
-        let s =createPetObject();
+    for(let i = (pageNumber - 1) * 40; i < 40*pageNumber; i++){
+        let s = pets[i];
 
        addPetToCatalog(JSON.parse(s));
     }
@@ -307,9 +308,36 @@ function addBio(container , bio){
     container.appendChild(bioDiv);
 }
 function generateBio(pet){
-    let trait = pet.traits[Math.floor(Math.random() * pet.traits.length)];
+    if(pet.traits.length ==0){
+        return miscleanousBios(pet);
+    }
+    let mainTrait = pet.traits[pet.traits.length -1];
     
-    return funnyBio(pet);
+    if(lovelysynonyms.includes(mainTrait)){
+        if(Math.random() > 0.4){
+            return flirtyBio(pet);
+        }
+        else{
+            return cleverBios(pet);
+        }
+    }
+    else if(funnysynonyms.includes(mainTrait)){
+        if(Math.random() > 0.5){
+            return funnyBio(pet);
+        }
+        else{
+            return sillyBios(pet);
+        }
+    }
+    else if(activesynonyms.includes(mainTrait)){
+        return activeBio(pet);
+    }
+    else if(foodiesynonyms.includes(mainTrait)){
+        return foodRelatedBios(pet);
+    }
+    else{
+        return confidentBio(pet);
+    }
 }
 
 //for generating bios returns a string that matches the description
