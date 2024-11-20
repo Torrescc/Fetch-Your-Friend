@@ -40,7 +40,7 @@ $(document).ready(function () {
     .done(response => {
         pets = response.data;
         console.log(pets);
-        //if(url == "catalog.html" || url == "catalog.htm"){ addAllPets(); }
+        if(url == "catalog.html" || url == "catalog.htm"){ addAllPets(); }
         createPetObject();
 
     })
@@ -96,10 +96,11 @@ function createPetObject(){
     else{
         newAnimal = "other";
     }
+    
     let returnedPet = {
         name : newPetfromAPI.attributes.name, 
         gender : newGender , 
-        breed : [newPetfromAPI.attributes.breedPrimary.toLowerCase() , newPetfromAPI.attributes.breedSecondary.toLowerCase()],
+        breed : [newPetfromAPI.attributes.breedPrimary , newPetfromAPI.attributes.breedSecondary],
         age : newPetfromAPI.attributes.ageString , 
         image : newPetfromAPI.attributes.pictureThumbnailUrl , 
         pounds : newPetfromAPI.sizeCurrent ,
@@ -107,8 +108,21 @@ function createPetObject(){
         link : newPetfromAPI.attributes.url ,
         animal : newAnimal,
     }
+    for(var propt in returnedPet){
+        if(returnedPet[propt] != undefined && propt != "traits" && propt != "breed"){
+            returnedPet[propt] = returnedPet[propt].replaceAll(" " , "_").toLowerCase();
+        }
+        
+        
+    }
+    for(let i = 0; i < returnedPet["breed"].length; i++){
+        if(returnedPet["breed"][i] != undefined){
+            returnedPet["breed"][i] = returnedPet["breed"][i].replaceAll(" " , "_").toLowerCase();
+        }
+    }
+
     console.log(returnedPet);
-    return returnedPet;
+    return JSON.stringify(returnedPet);
 
 }
 function GetTraits(description){
@@ -117,11 +131,15 @@ function GetTraits(description){
     var funnyPoints = 0;
     var activePoints = 0;
     var foodiePoints = 0;
+    if(description == undefined){
+        return [];
+    }
     let wordsfound = description.split(" " , 100);
 
     
 
     var traits = [];
+
     for(let i =0 ; i < wordsfound; i++){
        if(lovelyWords.includes(wordsfound[i])){
         lovelyPoints += 1;
@@ -197,6 +215,9 @@ function GetTraits(description){
 }
 
 function makeAllLower(str) {
+    if(str == undefined){
+        return undefined;
+    }
        return str.replace(/[^a-zA-Z\s]/g, '').toLowerCase();
 }
 function randomizeArray(array){
