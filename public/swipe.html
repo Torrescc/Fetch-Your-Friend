@@ -8,7 +8,6 @@
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin = "anonymous" referrerpolicy = "no-referrer"> </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src = "catalog.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="index-script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -24,33 +23,33 @@
         </div>
 
         <!-- Nav Bottom Div -->
-    <div class="nav-bottom">
-        <ul class="nav-links">
-            <li><a href="./catalog.html">
-                <span class="mobile-icon"><ion-icon name="apps-sharp"></ion-icon></span>
-                <span class="link-text">Catalog</span>
-            </a></li>
-            <li><a href="./swipe.html">
-                <span class="mobile-icon"><ion-icon name="heart-half"></ion-icon></span>
-                <span class="link-text">Swipe</span>
-            </a></li>
-            <li><a href="./contact-us.html">
-                <span class="mobile-icon"><ion-icon name="mail"></ion-icon></span>
-                <span class="link-text">Contact</span>
-            </a></li>
-            <li><a href="./profile.html" id="profile-btn">
-                <span class="mobile-icon"><ion-icon name="person-circle"></ion-icon></span>
-                <span class="link-text">Profile</span>
-            </a></li>
-        </ul>
-    </div>
+        <div class="nav-bottom">
+            <ul class="nav-links">
+                <li><a href="./catalog.html">
+                    <span class="mobile-icon"><ion-icon src = "./pets-icon.svg"></ion-icon></span>
+                    <span class="link-text">Catalog</span>
+                </a></li>
+                <li><a href="./swipe.html">
+                    <span class="mobile-icon"><ion-icon src = "./swipe-icon.svg"></ion-icon></span>
+                    <span class="link-text">Swipe</span>
+                </a></li>
+                <li><a href="./contact-us.html">
+                    <span class="mobile-icon"><ion-icon src = "./contact-us-icon.svg"></ion-icon></span>
+                    <span class="link-text">Contact</span>
+                </a></li>
+                <li><a href="./profile.html" id="profile-btn">
+                    <span class="mobile-icon"><ion-icon name="person-circle"></ion-icon></span>
+                    <span class="link-text">Profile</span>
+                </a></li>
+            </ul>
+        </div>
     </nav>
 
     <div class = "center">
     <div id = "swipedisplay">
     <div style="height: 20vh;"></div>
 
-   
+
     <div class = "buttons">
         <button id = "deny"><img src = "thumbsdown.png" alt = "thumbs down"></button>
         <button id ="accept"><img src = "checkmark.png" alt = "checkmark"></button>
