@@ -12,7 +12,7 @@ if(url == "catalog.html" || url == "catalog.htm"){
     catalogDisplayingNewPets();
 }
 if(url ==  "swipe.htm" || url == "swipe.html"){
-    window.addEventListener("DOMContentLoaded" , startAndConnectSwipe);
+    startSwipeDisplayingNewPets();
 }
 var Pet = {
     name : "smelly" ,
@@ -109,7 +109,7 @@ function printSaved(){
 //end of catalog
 
 //fucntions for swipe
-
+var numberOfPetsSwiped = 0;
 function startAndConnectSwipe(){
     document.getElementById("deny").addEventListener("click" , cycle);
     document.getElementById("accept").addEventListener("click" , saveAndCycle);
@@ -184,8 +184,8 @@ function saveAndCycle(){
 }
 // get next swipe
 function getNextPetSwipe(){
-    Pet.name = "smelly" + number++;
-    return Pet;
+    SwipeDisplayingNewPets();
+    return JSON.parse(pets[numberOfPetsSwiped++]);
 }
 
 // end of swipe
