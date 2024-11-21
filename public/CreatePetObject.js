@@ -1,7 +1,6 @@
 var pets = [];
 var currentPet =0;
 var pageAPINumber = 1;
-
 var Pet = {
     name : "smelly" ,
     age : "37 months" ,
@@ -13,6 +12,7 @@ var Pet = {
     image : "Dog.jpeg",
     gender : "boy",
 };
+
 function catalogDisplayingNewPets(){
     if(pets.length > pageNumber * 40){
         addAllPets();
@@ -21,7 +21,43 @@ function catalogDisplayingNewPets(){
         addMorePetsFromAPI();
     }
 }
+function startSwipeDisplayingNewPets(){
+    const apiKey = '4VxhkxM5';
+    const endpoint = 'https://api.rescuegroups.org/v5/public/animals/search/';
+    const requestData = {
+        headers: {
+            "Content-Type": "application/vnd.api+json",
+            "Authorization": apiKey
+        },
+        data: JSON.stringify({
+            data: {
+                type: "animals",
+                page : pageAPINumber++,
+                attributes: {
+                    species: "dog", // Filter for dogs; change as needed
+                    status: "Available",
 
+                }
+            }
+        }),
+        method: "POST"
+    };
+    $.ajax(endpoint, requestData)
+    .done(response => {
+        pets = pets.concat(createListPetObjects(response.data));
+        console.log(pets);
+        startAndConnectSwipe();
+        })
+    .fail(error => {
+        console.error("API request failed: ", error);
+    });
+}
+
+function SwipeDisplayingNewPets(){
+    if(pets.length < numberOfPetsSwiped + 20){
+        addMorePetsFromAPI();
+    }
+}
 function addMorePetsFromAPI(){
     const apiKey = '4VxhkxM5';
     const endpoint = 'https://api.rescuegroups.org/v5/public/animals/search/';
@@ -33,15 +69,15 @@ function addMorePetsFromAPI(){
         data: JSON.stringify({
             data: {
                 type: "animals",
+                page : pageAPINumber++,
                 attributes: {
                     species: "dog", // Filter for dogs; change as needed
                     status: "Available",
-                    page : pageAPINumber++
 
                 }
             }
         }),
-        method: "POST"
+        method: "GET"
     };
     $.ajax(endpoint, requestData)
     .done(response => {
@@ -54,7 +90,11 @@ function addMorePetsFromAPI(){
                 addMorePetsFromAPI();
             }
         }
-
+        if(url ==  "swipe.htm" || url == "swipe.html"){
+            if(pets.length < numberOfPetsSwiped + 20){
+                addMorePetsFromAPI();
+            }
+        }
 
     })
     .fail(error => {
