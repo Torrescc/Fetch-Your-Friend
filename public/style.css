@@ -162,6 +162,10 @@ nav {
         z-index: 10;
     }
 
+    .auth-buttons {
+        display: none;
+    }
+
     /* Arrange nav links vertically, with icons above the text */
     .nav-links {
         flex-direction: row;

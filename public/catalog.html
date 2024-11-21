@@ -11,27 +11,44 @@
     <script src = "CreatePetObject.js"></script>
     <script src = "script.js"></script>
     <script src = "catalog.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index-script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body id = "catalogbody">
     <div id = "topofCatalog">
-    <nav>
-        <!-- Nav Top Div -->
-        <div class="nav-top">
-            <p class="site-name"><a href="./index.html">Fetch Your Friend</a></p>
-            <div class="auth-buttons">
-                <a href="./sign-up-in.html" class="button">Sign In / Sign Up</a>
+        <nav>
+            <!-- Nav Top Div -->
+            <div class="nav-top">
+                <p class="site-name"><a href="./index.html">Fetch Your Friend</a></p>
+                <div class="auth-buttons">
+                    <a href="./sign-up-in.html" class="button">Sign In / Sign Up</a>
+                </div>
             </div>
-        </div>
-
-        <!-- Nav Bottom Div -->
+    
+            <!-- Nav Bottom Div -->
         <div class="nav-bottom">
             <ul class="nav-links">
-                <li><a href="./catalog.html">Catalog</a></li>
-                <li><a href="./swipe.html">Swipe</a></li>
-                <li><a href="./contact-us.html">Contact</a></li>
+                <li><a href="./catalog.html">
+                    <span class="mobile-icon"><ion-icon name="apps-sharp"></ion-icon></span>
+                    <span class="link-text">Catalog</span>
+                </a></li>
+                <li><a href="./swipe.html">
+                    <span class="mobile-icon"><ion-icon name="heart-half"></ion-icon></span>
+                    <span class="link-text">Swipe</span>
+                </a></li>
+                <li><a href="./contact-us.html">
+                    <span class="mobile-icon"><ion-icon name="mail"></ion-icon></span>
+                    <span class="link-text">Contact</span>
+                </a></li>
+                <li><a href="./profile.html" id="profile-btn">
+                    <span class="mobile-icon"><ion-icon name="person-circle"></ion-icon></span>
+                    <span class="link-text">Profile</span>
+                </a></li>
             </ul>
         </div>
-    </nav>
+        </nav>
 
     <button id = "filterbutton">
         disable
