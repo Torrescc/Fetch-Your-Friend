@@ -9,7 +9,7 @@ var pageNumber = 1;
 let url = window.location.href.slice(window.location.href.lastIndexOf("/")+1 , window.location.href.lastIndexOf("?"));
 if(url == "catalog.html" || url == "catalog.htm"){
     window.addEventListener("DOMContentLoaded", connect);
-    addMorePetsFromAPI();
+    catalogDisplayingNewPets();
 }
 if(url ==  "swipe.htm" || url == "swipe.html"){
     window.addEventListener("DOMContentLoaded" , startAndConnectSwipe);
@@ -38,11 +38,15 @@ function connect(){
 function pageUp(){
     pageNumber +=1;
     document.getElementById("pageNumber").textContent =  Number(document.getElementById("pageNumber").textContent) + 1;
+    catalogDisplayingNewPets();
+
 }
 function pageDown(){
     if(Number(document.getElementById("pageNumber").textContent) > 1){
         document.getElementById("pageNumber").textContent =  Number(document.getElementById("pageNumber").textContent) - 1;
         pageNumber -= 1;
+        catalogDisplayingNewPets();
+
     }
 
 }

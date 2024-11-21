@@ -13,7 +13,14 @@ var Pet = {
     image : "Dog.jpeg",
     gender : "boy",
 };
-
+function catalogDisplayingNewPets(){
+    if(pets.length > pageNumber * 40){
+        addAllPets();
+    }
+    else{
+        addMorePetsFromAPI();
+    }
+}
 
 function addMorePetsFromAPI(){
     const apiKey = '4VxhkxM5';
@@ -46,14 +53,12 @@ function addMorePetsFromAPI(){
             }else{
                 addMorePetsFromAPI();
             }
-            //saveAs(JSON.stringify(pets) , "pets.txt");
         }
 
 
     })
     .fail(error => {
         console.error("API request failed: ", error);
-        $('#pet-list').append("<p>Sorry, we couldn't load the pets right now.</p>");
     });
 }
 
