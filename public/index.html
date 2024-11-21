@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch Your Friend</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index-script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -23,18 +25,18 @@
     <div class="nav-bottom">
         <ul class="nav-links">
             <li><a href="./catalog.html">
-                <span class="mobile-icon"><ion-icon name="apps-sharp"></ion-icon></span>
+                <span class="mobile-icon"><ion-icon src = "./pets-icon.svg"></ion-icon></span>
                 <span class="link-text">Catalog</span>
             </a></li>
             <li><a href="./swipe.html">
-                <span class="mobile-icon"><ion-icon name="heart-half"></ion-icon></span>
+                <span class="mobile-icon"><ion-icon src = "./swipe-icon.svg"></ion-icon></span>
                 <span class="link-text">Swipe</span>
             </a></li>
             <li><a href="./contact-us.html">
-                <span class="mobile-icon"><ion-icon name="mail"></ion-icon></span>
+                <span class="mobile-icon"><ion-icon src = "./contact-us-icon.svg"></ion-icon></span>
                 <span class="link-text">Contact</span>
             </a></li>
-            <li><a href="./profile.html">
+            <li><a href="./profile.html" id="profile-btn">
                 <span class="mobile-icon"><ion-icon name="person-circle"></ion-icon></span>
                 <span class="link-text">Profile</span>
             </a></li>

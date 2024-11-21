@@ -14,6 +14,15 @@
 	<script src="sign-up-in.js"></script>
 </head>
 <body class="sign-up-in">
+	<nav>
+        <!-- Nav Top Div -->
+        <div class="nav-top">
+            <p class="site-name"><a href="./index.html">Fetch Your Friend</a></p>
+            <div class="auth-buttons">
+                <a href="./sign-up-in.html" class="button">Sign In / Sign Up</a>
+            </div>
+        </div>
+    </nav>
 	<h2>Sign In/Sign Up</h2>
 	
 	<header></header>
@@ -37,7 +46,7 @@
 			<p id="account_error_msg" hidden>Invalid information; please try again</p>
 		</div>
 		
-		<form action="index-logged-in.html" method="GET">
+		<form action="index.html" method="GET">
 			<label for "name">Enter Name (First and Last):</label>
 			<input type="text" id="name" name="name" size="24" required><br>
 			<label for "email">Enter Email:</label>
@@ -57,7 +66,7 @@
 			<p id="sign_error_msg" hidden>Invalid username or password; please try again</p>
 		</div>
 		
-		<form action="index-logged-in.html" method="GET">
+		<form action="index.html" method="GET">
 			<label for "existuser">Enter Username:</label>
 			<input type="text" id="existuser" name="existuser" size="24" required><br>
 			<label for "existpass">Enter Password:</label>

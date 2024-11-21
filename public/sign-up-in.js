@@ -23,7 +23,7 @@ function createClicked(event) {
 }
 
 function signInClicked(event) {
-	console.log("Sign in button clicked);
+	console.log("Sign in button clicked");
 	let username = document.getElementById("existuser").value;
 	let userpass = document.getElementById("existpass").value;
 	
@@ -32,4 +32,5 @@ function signInClicked(event) {
 		window.location.replace("index-logged-in.html");
 	} else {
 		document.getElementById("sign_error_msg").style.visibility = "visible";
+	}
 }
