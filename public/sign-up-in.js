@@ -27,6 +27,8 @@ function createClicked(event) {
 		"username" : username,
 		"pass" : pass
 	};
+	
+	sessionStorage.setItem("email", email);
 	localStorage.setItem(email, JSON.stringify(user));
 	
 	// How to check if variables are valid size?
