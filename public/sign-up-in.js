@@ -10,19 +10,24 @@ function main() {
 function createClicked(event) {
 	console.log("Create account button clicked");
 	localStorage.setItem("signed_in", FALSE);
-	localStorage.setItem("user ID", 0);
+	
 	let name = document.getElementById("name").value;
-	localStorage.setItem("name", name);
 	let email = document.getElementById("email").value;
-	localStorage.setItem("email address", email);
 	let username = document.getElementById("user").value;
-	localStorage.setItem("username", username);
 	let pass = document.getElementById("pass").value;
-	localStorage.setItem("password", pass);
+	
+	let user = {
+		"email" : email,
+		"name" : name,
+		"username" : username,
+		"pass" : pass
+	};
+	localStorage.setItem(email, JSON.stringify(user));
 	
 	// How to check if variables are valid size?
 	
 	localStorage.setItem("signed_in", TRUE);
+	sessionStorage.setItem("email", email);
 	window.location.replace("index-logged-in.html");
 }
 
@@ -36,6 +41,7 @@ function signInClicked(event) {
 	if (username === localStorage.getItem("user") && userpass === localStorage.getItem("password")) {
 		document.getElementById("sign_error_msg").style.visibility = "hidden";
 		localStorage.setItem("signed_in", TRUE);
+		sessionStorage.setItem("email", email);
 		window.location.replace("index-logged-in.html");
 	} else {
 		document.getElementById("sign_error_msg").style.visibility = "visible";
