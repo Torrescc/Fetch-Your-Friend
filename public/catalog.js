@@ -27,7 +27,12 @@ var Pet = {
 };
 
 var savedPets = [];
-
+$(function() {
+    if(!inLocalStorage("savedPets")){
+        savedPets = [];
+        localStorage.setItem("savedPets" , JSON.stringify(savedPets));
+    }
+})
 //page turner functions
 function connect(){
     document.getElementById("pageTurner").children[0].addEventListener("click" , pageDown);
@@ -93,19 +98,25 @@ function toggleFilters(){
 function savePetFromButtonOnCatalog(){
    for(let i = 0; i < this.parentElement.classList.length; i++){
       if(isJsonString(this.parentElement.classList[i])){
-        savedPets.push(JSON.parse(this.parentElement.classList[1]));
+        savePet(JSON.parse(this.parentElement.classList[1]));
       }
     }
     this.parentElement.remove();
    
 }
+function savePet(pet){
+    savedPets = JSON.parse(localStorage.getItem("savedPets"));
+    savedPets.push(pet);
+    localStorage.setItem("savedPets" , JSON.stringify(savedPets))
+}
 // test print all the SavedPets
 function printSaved(){
-    
+    savedPets = JSON.parse(localStorage.getItem("savedPets"));
     for(let i =0; i < savedPets.length; i++){
         console.log(savedPets[i].name);
     }
 }
+
 //end of catalog
 
 //fucntions for swipe
@@ -179,7 +190,7 @@ function touchEnd(){
 
 // save then cycle happens when accept
 function saveAndCycle(){
-    savedPets.push(JSON.parse(jsonFromList(swipePointer1.classList)));
+    savePet(JSON.parse(jsonFromList(swipePointer1.classList)));
     cycle();
 }
 // get next swipe
@@ -541,4 +552,12 @@ function jsonFromList(lis){
     }
     return "{}";
 }
-
+// helper function in localStorage
+function inLocalStorage(name){
+    for(let i = 0 ; i < localStorage.length; i++){
+        if(name == localStorage.key(i)){
+            return true;
+        }
+    }
+    return false;
+}

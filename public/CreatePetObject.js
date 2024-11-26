@@ -24,7 +24,7 @@ function catalogDisplayingNewPets(){
 function startSwipeDisplayingNewPets(){
     const apiKey = '4VxhkxM5';
     const endpoint = 'https://api.rescuegroups.org/v5/public/animals/search/';
-    const requestData = {
+    let requestData = {
         headers: {
             "Content-Type": "application/vnd.api+json",
             "Authorization": apiKey
@@ -32,7 +32,7 @@ function startSwipeDisplayingNewPets(){
         data: JSON.stringify({
             data: {
                 type: "animals",
-                page : pageAPINumber++,
+                page : pageAPINumber,
                 attributes: {
                     species: "dog", // Filter for dogs; change as needed
                     status: "Available",
@@ -42,6 +42,7 @@ function startSwipeDisplayingNewPets(){
         }),
         method: "POST"
     };
+    pageAPINumber += 1;
     $.ajax(endpoint, requestData)
     .done(response => {
         pets = pets.concat(createListPetObjects(response.data));
@@ -61,7 +62,7 @@ function SwipeDisplayingNewPets(){
 function addMorePetsFromAPI(){
     const apiKey = '4VxhkxM5';
     const endpoint = 'https://api.rescuegroups.org/v5/public/animals/search/';
-    const requestData = {
+    let requestData = {
         headers: {
             "Content-Type": "application/vnd.api+json",
             "Authorization": apiKey
@@ -69,7 +70,7 @@ function addMorePetsFromAPI(){
         data: JSON.stringify({
             data: {
                 type: "animals",
-                page : pageAPINumber++,
+                page : pageAPINumber,
                 attributes: {
                     species: "dog", // Filter for dogs; change as needed
                     status: "Available",
@@ -79,16 +80,19 @@ function addMorePetsFromAPI(){
         }),
         method: "GET"
     };
+    pageAPINumber += 1;
+
+
     $.ajax(endpoint, requestData)
     .done(response => {
         pets = pets.concat(createListPetObjects(response.data));
-        console.log(pets);
         if((url == "catalog.html" || url == "catalog.htm")){ 
             if(pets.length > pageNumber * 40){
                 addAllPets();
             }else{
                 addMorePetsFromAPI();
             }
+        console.log(response);
         }
         if(url ==  "swipe.htm" || url == "swipe.html"){
             if(pets.length < numberOfPetsSwiped + 20){
