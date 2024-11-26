@@ -14,6 +14,7 @@
     <script src="index-script.js"></script>
     <script src = "CreatePetObject.js"></script>
     <script src = "catalog.js"></script>
+	<script src="profile.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
@@ -53,20 +54,13 @@
     <h2 class = "head-title">User Profile</h2>
 	
 	<!-- This table will contain the user's information -->
-	<table class="user-info">
-		<tr class="profile-row">
-			<td>Name:</td>
-			<td>Ima Auggie</td>
-		</tr>
-		<tr class="profile-row">
-			<td>Email:</td>
-			<td>auggieima@augsburg.edu</td>
-		</tr>
-		<tr class="profile-row">
-			<td>Username:</td>
-			<td>auggieima</td>
-		</tr>
-	</table>
+	<main class="user-info">
+		<p class="profile-row" id="name"></p>
+		
+		<p class="profile-row" id="email"></p>
+		
+		<p class="profile-row" id="username"></p>
+	</main>
 	
 	<h2 class="head-title">Saved Pets</h2>
 	

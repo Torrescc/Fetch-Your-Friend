@@ -737,7 +737,7 @@ div.buttons button{
 	text-align: center;
 }
 
-.profile-row > td {
+.profile-row {
 	font-size: 12pt;
 	padding: 3vh 1vh;
 	margin: 0.2vh 0.4vh;
