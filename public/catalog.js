@@ -14,6 +14,7 @@ if(url == "catalog.html" || url == "catalog.htm"){
 if(url ==  "swipe.htm" || url == "swipe.html"){
     startSwipeDisplayingNewPets();
 }
+
 var Pet = {
     name : "smelly" ,
     age : "37" ,
@@ -31,6 +32,12 @@ $(function() {
     if(!inLocalStorage("savedPets")){
         savedPets = [];
         localStorage.setItem("savedPets" , JSON.stringify(savedPets));
+    }
+    if(url == "profile.html" || url == "profile.htm"){
+        savedPets = JSON.parse(localStorage.getItem("savedPets"));
+        for(let i = 0; i < savedPets.length; i++){
+            addPetToSavedPets(savedPets[i]);
+        }
     }
 })
 //page turner functions
@@ -326,7 +333,7 @@ function generateBio(pet){
     if(pet.traits.length ==0){
         return miscleanousBios(pet);
     }
-    let mainTrait = pet.traits[pet.traits.length -1];
+    let mainTrait = pet.traits[0];
     
     if(lovelysynonyms.includes(mainTrait)){
         if(Math.random() > 0.4){
