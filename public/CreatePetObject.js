@@ -67,18 +67,17 @@ function addMorePetsFromAPI(){
             "Content-Type": "application/vnd.api+json",
             "Authorization": apiKey
         },
-        data: JSON.stringify({
-            data: {
+        data: {
                 type: "animals",
                 page : pageAPINumber,
                 attributes: {
                     species: "dog", // Filter for dogs; change as needed
                     status: "Available",
 
-                }
             }
-        }),
-        method: "GET"
+        },
+        
+        
     };
     pageAPINumber += 1;
 
