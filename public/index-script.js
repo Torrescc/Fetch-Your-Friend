@@ -4,10 +4,10 @@ $(document).ready(function () {
         e.preventDefault();  // Prevent default anchor behavior
 
         // Check if "signed-in" exists in localStorage and its value
-        var isSignedIn = localStorage.getItem('signed-in');
+        var isSignedIn = localStorage.getItem('signed_in');
 
         // Redirect based on the "signed-in" value
-        if (isSignedIn === 'true') {
+        if (isSignedIn === "TRUE") {
             window.location.href = './profile.html';  // Redirect to profile page
         } else {
             window.location.href = './sign-up-in.html';  // Redirect to sign-up/in page
