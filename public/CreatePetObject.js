@@ -29,7 +29,7 @@ function startSwipeDisplayingNewPets(){
             "Content-Type": "application/vnd.api+json",
             "Authorization": apiKey
         },
-        data: JSON.stringify({
+        
             data: {
                 type: "animals",
                 page : pageAPINumber,
@@ -38,9 +38,8 @@ function startSwipeDisplayingNewPets(){
                     status: "Available",
 
                 }
-            }
-        }),
-        method: "POST"
+            },
+        
     };
     pageAPINumber += 1;
     $.ajax(endpoint, requestData)
@@ -71,7 +70,6 @@ function addMorePetsFromAPI(){
                 type: "animals",
                 page : pageAPINumber,
                 attributes: {
-                    species: "dog", // Filter for dogs; change as needed
                     status: "Available",
 
             }
