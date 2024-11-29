@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Catalog</title>
+    <link href="style.css" rel = "stylesheet">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin = "anonymous" referrerpolicy = "no-referrer"> </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src = "CreatePetObject.js"></script>
+    <script src = "script.js"></script>
+    <script src = "catalog.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index-script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body id = "catalogbody">
+    <div id = "topofCatalog">
+        <nav>
+            <!-- Nav Top Div -->
+            <div class="nav-top">
+                <p class="site-name"><a href="./index.html">Fetch Your Friend</a></p>
+                <div class="auth-buttons">
+                    <a href="./sign-up-in.html" class="button">Sign In / Sign Up</a>
+                </div>
+            </div>
+    
+            <!-- Nav Bottom Div -->
+            <div class="nav-bottom">
+                <ul class="nav-links">
+                    <li><a href="./catalog.html">
+                        <span class="mobile-icon"><ion-icon src = "./pets-icon.svg"></ion-icon></span>
+                        <span class="link-text">Catalog</span>
+                    </a></li>
+                    <li><a href="./swipe.html">
+                        <span class="mobile-icon"><ion-icon src = "./swipe-icon.svg"></ion-icon></span>
+                        <span class="link-text">Swipe</span>
+                    </a></li>
+                    <li><a href="./contact-us.html">
+                        <span class="mobile-icon"><ion-icon src = "./contact-us-icon.svg"></ion-icon></span>
+                        <span class="link-text">Contact</span>
+                    </a></li>
+                    <li><a href="./profile.html" id="profile-btn">
+                        <span class="mobile-icon"><ion-icon name="person-circle"></ion-icon></span>
+                        <span class="link-text">Profile</span>
+                    </a></li>
+                </ul>
+            </div>
+        </nav>
+
+    <button id = "filterbutton">
+        disable
+    </button>
+
+    <div class = "filters">
+        <div>
+            <div>
+                Current Filters
+            </div>
+            <div class = "filterList">
+                <div class="currentfilter">
+                    dog
+                </div>
+                <div class = "currentfilter">
+                    husky
+                </div>
+                <div class = "currentfilter">
+                    smelly
+                </div>
+                <div class = "currentfilter">
+                    either age
+                </div>
+                <div class = "currentfilter">
+                    any size
+                </div>
+            </div>
+        </div>
+        
+
+        <form action = "catalog.html" method = "GET">
+            <div>
+                <label for = "animal">animal</label><br>
+                <select name = "animal" id = "animal">
+                    <option value="dog">dog</option>
+                    <option value = "cat">cat</option>
+                    <option value = "other">other</option>
+                </select> 
+            </div>
+            <div>
+                <label for="breed">breed</label><br>
+                <input type = "text"  id = "breed"  name = "breed" >
+            </div>
+            <div>
+                <label for = "trait">trait</label><br>
+                <input type = "text"  id = "trait"  name = "trait" >
+            </div>
+            <div>
+                <label for = "age">age</label> <br>
+                <select name = "age" id = "age">
+                    <option value = "either">either</option>
+                    <option value = "puppy">puppy</option>
+                    <option value = "adult">adult</option>
+                    
+                </select>
+
+            </div>
+            <div>
+                <label for = "size">size</label> <br>
+                <select name = "size" id = "size">
+                    <option value = "any">any</option>
+                    <option value = "small">small</option>
+                    <option value = "meduim">medium</option>
+                    <option value = "large">large</option>
+                </select>
+
+            </div>
+            <input type = "submit"  value = "search">
+                
+        </form>
+        
+        
+
+
+
+    </div> <!--end of filters-->
+    
+    </div><!--end of top of the page-->
+
+
+
+    <div class = "Catalog">
+        <div class = "pet">
+            <button><img src = "checkmark.png" alt = "checkmark"></button>
+            <a href = "https://example.org"><img src = "Dog.jpeg" alt = "a picture of one of our lovely pets offered"></a>
+            <div class = "name"> Smelly </div>
+            <div class = "age">3 years</div>
+            <div class = "breed">
+                German Shepard & Husky
+            </div>
+            <div class = "bio">
+                i'm 60 pounds if that matters
+                and I love feet
+            </div>
+
+            <div class = "character">
+                <div class = "trait matchedtrait">
+                    smelly
+                </div>
+                <div class = "trait">
+                    playful
+                </div>
+                <div class = "trait">
+                    white
+                </div>
+
+                
+                <div class = "trait" >
+                        smart
+                </div>
+                <div class = "trait" >
+                        loyal
+                </div>
+                
+            </div>
+
+        </div>
+        <div class = "pet">
+            <button><img src = "checkmark.png" alt = "checkmark"></button>
+            <a href = "https://example.org"><img src = "Dog.jpeg" alt = "a picture of one of our lovely pets offered"></a>
+            <div class = "name"> Smelly </div>
+            <div class = "age">3 years</div>
+            <div class = "breed">
+                German Shepard & Husky
+            </div>
+            <div class = "bio">
+                i'm 60 pounds if that matters
+                and I love feet
+            </div>
+
+            <div class = "character">
+                <div class = "trait matchedtrait">
+                    smelly
+                </div>
+                <div class = "trait">
+                    playful
+                </div>
+                <div class = "trait">
+                    white
+                </div>
+
+                
+                <div class = "trait" >
+                        smart
+                </div>
+                <div class = "trait" >
+                        loyal
+                </div>
+                
+            </div>
+
+        </div>
+
+      
+
+    </div>
+    <div id = "pageTurner">
+        <p> &#x003c; </p>
+        <p id = "pageNumber"> 1</p>
+        <p> &#x003e;</p>
+    </div>
+</body>
+</html>

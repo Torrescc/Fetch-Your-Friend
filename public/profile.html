@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<!-- profile.html -->
+<!-- author: Ethan Kempenich, Zach Warns -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+	
+	<link href="style.css" rel="stylesheet" type = "text/css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index-script.js"></script>
+
+	<script src="profile.js"></script>
+
+    <script src = "CreatePetObject.js"></script>
+    <script src = "catalog.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body class="profile">
+    <nav>
+        <!-- Nav Top Div -->
+        <div class="nav-top">
+            <p class="site-name"><a href="./index.html">Fetch Your Friend</a></p>
+            <div class="auth-buttons">
+                <a href="./sign-up-in.html" class="button">Sign In / Sign Up</a>
+            </div>
+        </div>
+
+        <!-- Nav Bottom Div -->
+        <div class="nav-bottom">
+            <ul class="nav-links">
+                <li><a href="./catalog.html">
+                    <span class="mobile-icon"><ion-icon src = "./pets-icon.svg"></ion-icon></span>
+                    <span class="link-text">Catalog</span>
+                </a></li>
+                <li><a href="./swipe.html">
+                    <span class="mobile-icon"><ion-icon src = "./swipe-icon.svg"></ion-icon></span>
+                    <span class="link-text">Swipe</span>
+                </a></li>
+                <li><a href="./contact-us.html">
+                    <span class="mobile-icon"><ion-icon src = "./contact-us-icon.svg"></ion-icon></span>
+                    <span class="link-text">Contact</span>
+                </a></li>
+                <li><a href="./profile.html" id="profile-btn">
+                    <span class="mobile-icon"><ion-icon name="person-circle"></ion-icon></span>
+                    <span class="link-text">Profile</span>
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2 class = "head-title">User Profile</h2>
+	
+	<!-- This table will contain the user's information -->
+	<main class="user-info">
+		<p class="profile-row" id="name"></p>
+		
+		<p class="profile-row" id="email"></p>
+		
+		<p class="profile-row" id="username"></p>
+	</main>
+	
+	<h2 class="head-title">Saved Pets</h2>
+	
+	<div class = "Catalog">
+        <div class = "pet">
+            <a href = "https://example.org"><img src = "Dog.jpeg" alt = "a picture of one of our lovely pets offered"></a>
+            <div class = "name"> Smelly </div>
+            <div class = "age">3 years</div>
+            <div class = "breed">
+                German Shepard & Husky
+            </div>
+            <div class = "bio">
+                i'm 60 pounds if that matters
+                and I love feet
+            </div>
+
+            <div class = "character">
+                <div class = "trait matchedtrait">
+                    smelly
+                </div>
+                <div class = "trait">
+                    playful
+                </div>
+                <div class = "trait">
+                    white
+                </div>
+
+                
+                <div class = "trait" >
+                        smart
+                </div>
+                <div class = "trait" >
+                        loyal
+                </div>
+                
+            </div>
+
+        </div>
+        <div class = "pet">
+            <a href = "https://example.org"><img src = "Dog.jpeg" alt = "a picture of one of our lovely pets offered"></a>
+            <div class = "name"> Smelly </div>
+            <div class = "breed">
+                German Shepard & Husky
+            </div>
+            <div class = "bio">
+                i'm 60 pounds if that matters
+                and I love feet
+            </div>
+
+            <div class = "character">
+                <div class = "trait matchedtrait">
+                    smelly
+                </div>
+                <div class = "trait">
+                    playful
+                </div>
+                <div class = "trait">
+                    white
+                </div>
+
+                
+                <div class = "trait" >
+                        smart
+                </div>
+                <div class = "trait" >
+                        loyal
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

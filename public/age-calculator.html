@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Age Calculator</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="style.css" rel="stylesheet" type = "text/css">
+	<script src="calculator.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index-script.js"></script>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body class="calculator-page">
+	<nav>
+        <!-- Nav Top Div -->
+        <div class="nav-top">
+            <p class="site-name"><a href="./index.html">Fetch Your Friend</a></p>
+            <div class="auth-buttons">
+                <a href="./sign-up-in.html" class="button">Sign In / Sign Up</a>
+            </div>
+        </div>
+
+        <!-- Nav Bottom Div -->
+        <div class="nav-bottom">
+            <ul class="nav-links">
+                <li><a href="./catalog.html">
+                    <span class="mobile-icon"><ion-icon src = "./pets-icon.svg"></ion-icon></span>
+                    <span class="link-text">Catalog</span>
+                </a></li>
+                <li><a href="./swipe.html">
+                    <span class="mobile-icon"><ion-icon src = "./swipe-icon.svg"></ion-icon></span>
+                    <span class="link-text">Swipe</span>
+                </a></li>
+                <li><a href="./contact-us.html">
+                    <span class="mobile-icon"><ion-icon src = "./contact-us-icon.svg"></ion-icon></span>
+                    <span class="link-text">Contact</span>
+                </a></li>
+                <li><a href="./profile.html" id="profile-btn">
+                    <span class="mobile-icon"><ion-icon name="person-circle"></ion-icon></span>
+                    <span class="link-text">Profile</span>
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+	
+	<h2 class = "head-title">Pet Age Calculator</h2>
+	
+	<main class = "calculator">
+		<p class="entry">
+			<label for="species">Enter your pet's species (e.g. dog, cat):</label>
+			<input type="text" id="species" name="species" required>
+		</p>
+		<p class="entry">
+			<label for="size">Enter your pet's relative size (small, medium, or large):</label>
+			<input type="text" id="size" name="size" required>
+		</p>
+		<p class="entry">
+			<label for="age">Enter your pet's age in human years:</label>
+			<input type="text" class="digits" id="age" name="age" required>
+		</p>
+		
+		<button type="button" id="calculatebutton">Calculate Pet's Age</button>
+		
+		<p class="entry" id="calculated-age"></p>
+	</main>
+</body>
+</html>

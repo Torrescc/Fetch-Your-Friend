@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<!-- sign-up-in.html -->
+<!-- author: Ethan Kempenich, Chris Torres -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up</title>
+	
+	<link href="style.css" rel="stylesheet" type = "text/css">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="sign-up-in.js"></script>
+</head>
+<body class="sign-up-in">
+	<nav>
+        <!-- Nav Top Div -->
+        <div class="nav-top">
+            <p class="site-name"><a href="./index.html">Fetch Your Friend</a></p>
+            <div class="auth-buttons">
+                <a href="./sign-up-in.html" class="button">Sign In / Sign Up</a>
+            </div>
+        </div>
+    </nav>
+	<h2>Sign In/Sign Up</h2>
+	
+	<header></header>
+	
+	<!-- Sign Up/Sign In Sections -->
+    <section class="sign-text">
+		<!-- Image Section -->
+		<div class="home-image">
+			<img src="./kitten-puppy-home-banner.jpg" alt="Home Page Image">
+		</div>
+
+		<div class="home-content">
+			<div class="content-boxes"></div>
+			<div class="content-boxes"></div>
+			<div class="content-boxes"></div>
+		</div>
+		
+		<p class="sign-header">Sign up to view pets!</p>
+		
+		<div class="sign-error">
+			<p id="account_error_msg" hidden>Invalid information; please try again</p>
+		</div>
+		
+		<form action="index.html" method="GET">
+			<label for="name">Enter Name (First and Last):</label>
+			<input type="text" id="name" name="name" size="24" required><br>
+			<label for="email">Enter Email:</label>
+			<input type="text" id="email" name="email" size="24" required><br>
+			<label for="user">Enter New Username:</label>
+			<input type="text" id="user" name="user" size="24" required><br>
+			<label for="pass">Enter New Password:</label>
+			<input type="text" id="pass" name="pass" size="24" required><br>
+			<label for="confirm">Confirm New Password:</label>
+			<input type="text" id="confirm" name="confirm" size="24" required><br>
+			<input type="submit" id="createaccount" value="Create Account"><br>
+		</form>
+		
+		<p class="sign-header">Already have an account? Sign in!</p>
+		
+		<div class="sign-error">
+			<p id="sign_error_msg" hidden>Invalid username or password; please try again</p>
+		</div>
+		
+		<form action="index.html" method="GET">
+			<label for="existuser">Enter Username:</label>
+			<input type="text" id="existuser" name="existuser" size="24" required><br>
+			<label for="existpass">Enter Password:</label>
+			<input type="password" id="existpass" name="existpass" size="10" maxlength="10" required><br>
+			<input type="submit" id="signin" value="Sign In"><br>
+		</form>
+	</section>
+	
+	<footer></footer>
+</body>
+</html>
