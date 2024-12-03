@@ -6,8 +6,8 @@ function main() {
 }
 
 function loadUser() {
-	let userEmail = sessionStorage.getItem("email");
-	let userString = localStorage.getItem(userEmail);
+	let username = sessionStorage.getItem("username");
+	let userString = localStorage.getItem(username);
 	let userObject = JSON.parse(userString);
 	
 	$("#name").html("Name: " + userObject.name);
