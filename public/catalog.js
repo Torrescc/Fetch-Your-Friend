@@ -33,13 +33,15 @@ $(function() {
         savedPets = [];
         localStorage.setItem("savedPets" , JSON.stringify(savedPets));
     }
-    if(url == "profile.html" || url == "profile.htm"){
-        savedPets = JSON.parse(localStorage.getItem("savedPets"));
-        for(let i = 0; i < savedPets.length; i++){
-            addPetToSavedPets(savedPets[i]);
-        }
-    }
+    
 })
+function addAllSavedPetsToCatalog(savedPets){
+    for(let i = 0; i < savedPets.length; i++){
+        addPetToSavedPets(savedPets[i]);
+    }
+}
+
+
 //page turner functions
 function connect(){
     document.getElementById("pageTurner").children[0].addEventListener("click" , pageDown);
