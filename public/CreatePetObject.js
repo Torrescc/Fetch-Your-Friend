@@ -58,6 +58,7 @@ function SwipeDisplayingNewPets(){
         addMorePetsFromAPI();
     }
 }
+var valueObject;
 function addMorePetsFromAPI(){
     const apiKey = '4VxhkxM5';
     const endpoint = 'https://api.rescuegroups.org/v5/public/animals/search/';
@@ -69,21 +70,38 @@ function addMorePetsFromAPI(){
         data: {
                 type: "animals",
                 page : pageAPINumber,
-                attributes: {
-                    status: "Available",
-
-            }
+                fields : {},
         },
         
         
     };
+    
+    
     pageAPINumber += 1;
 
 
     $.ajax(endpoint, requestData)
     .done(response => {
-        pets = pets.concat(createListPetObjects(response.data));
+        let petsTobeAdded = createListPetObjects(response.data);
         if((url == "catalog.html" || url == "catalog.htm")){ 
+            score = 0;
+            if(valueObject != null){
+                if(valueObject.breed != ""){
+                    score +=1;
+                }
+                score += 3;
+                if(valueObject.age != "either"){
+                    score +=1;
+                }
+                if(valueObject.size != "any"){
+                    score +=1;
+                }
+            }
+            for(let i = 0; i < petsTobeAdded.length; i++){
+                if(evaluateScore(valueObject , JSON.parse(petsTobeAdded[i])) >= score ){
+                    pets.push(petsTobeAdded[i]);
+                }
+            }    
             if(pets.length > pageNumber * 40){
                 addAllPets();
             }else{
@@ -103,21 +121,20 @@ function addMorePetsFromAPI(){
     });
 }
 
-var lovelyWords = [ "lovely" , "loving" , "care" , "caring" , "friends" , "friend" , "friendly" ,"lover" , "kiss" , "kisses" , "cu"];
+var lovelyWords = [ "lovely" , "loving" , "care" , "caring" , "friends" , "friend" , "friendly" ,"lover" , "kiss" , "kisses" , "cuddles" , "cuddling", "cuddle"];
 var lovelysynonyms = [ "loving" , "caring" , "friendly" , "kind" , "warmhearted"];
 
 var activeWords = ["adventurous" , "adventure" , "active" , "play" , "playful" ,"playing" , "played" , "yard" , "high" , "energy" , "high-energy"];
 var activesynonyms = ["adventurous" , "active" , "playful" , "high-energy"];
 
-var funnyWords = ["silly" , "funny" , "goofy" , "toy" , "toys" , "goof" , "fun"];
+var funnyWords = ["silly" , "funny" , "goofy" , "toy" , "toys" , "goof" , "fun", "waggy" , "wag"];
 var funnysynonyms = ["silly" , "funny" , "goofy" , "humorous" , "amusing"];
 
-var confidentWords = ["confident" , "hard-working" , "protective" , "proud" , "courageous" , "pride" , "courage" , "protect" , "protected" ,"protected" ,"work" , "working" , "worked"];
+var confidentWords = ["confident" , "hard-working" , "protective" , "proud" , "courageous" , "pride" , "courage" , "protect" , "protected" ,"protected" ,"work" , "working" , "worked" , "smug"];
+var confidentsynonyms = ["confident" , "hard-working" , "protective" , "proud" , "courageous" , "smug"];
 
-var confidentsynonyms = ["confident" , "hard-working" , "protective" , "proud" , "courageous"];
-
-var foodieWords = ["dinnertime" , "dinner" , "food" , "foodie" , "dogfood" , "hungry" , "appetite" , "gourmet" , "catfood"]
-var foodiesynonyms = ["gluttonous" , "foodie" ,"food_lover" , "food_enjoyer" , "gourmet"];
+var foodieWords = ["dinnertime" , "dinner" , "food" , "foodie" , "dogfood" , "hungry" , "appetite" , "gourmet" , "catfood"  , "gourmand"]
+var foodiesynonyms = ["gluttonous" , "foodie" ,"food_lover" , "food_enjoyer" , "gourmet" , "gourmand"];
 
 
 function createListPetObjects(array){
@@ -130,9 +147,11 @@ function createListPetObjects(array){
 }
 function createPetObjectFrom(newPetfromAPI){
     
-   
+   if(newPetfromAPI.attributes == null){
+     return '{ "traits" : "[]" , "breed" : "[]" , "gender" : "" , "name" : "" , "age" : "" , "image" :"" , "link" : "" ,"animal" : ""}';
+   }
     let newGender;
-    if(newPetfromAPI.attributes.sex = "Male"){
+    if(newPetfromAPI.attributes.sex == "Male"){
         newGender = "boy"
     }
     else{

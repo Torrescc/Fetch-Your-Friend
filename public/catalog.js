@@ -7,10 +7,7 @@ var pageNumber = 1;
 
 // checks which function we are using
 let url = window.location.href.slice(window.location.href.lastIndexOf("/")+1 , window.location.href.lastIndexOf("?"));
-if(url == "catalog.html" || url == "catalog.htm"){
-    window.addEventListener("DOMContentLoaded", connect);
-    catalogDisplayingNewPets();
-}
+
 if(url ==  "swipe.htm" || url == "swipe.html"){
     startSwipeDisplayingNewPets();
 }
@@ -554,8 +551,15 @@ if(url == "catalog.html" || url == "catalog.htm"){
             let attribute = parsedquery[i].split("=" , 2 )
             valueString += ' "' + attribute[0] + '" : "' + attribute[1] + '" ,'
         }
-        let valueObject = JSON.parse(valueString.slice(0 , valueString.length-1) + "}");
+        if(!(window.location.href.lastIndexOf("?") == -1)){
+            valueObject = JSON.parse(valueString.slice(0 , valueString.length-1) + "}");
+
+        }
+        console.log(valueObject);
+        catalogDisplayingNewPets();
+
     });
+    window.addEventListener("DOMContentLoaded", connect);
 }
 var exampleValue = {
     age : "puppy" ,
@@ -566,6 +570,8 @@ var exampleValue = {
 };
 function evaluateScore(value  , Pet){
     let score = 0;
+    console.log(Pet);
+    
     if(Pet.animal.toLowerCase() == value.animal.toLowerCase()){
         score += 3;
     }
@@ -598,6 +604,7 @@ function evaluateScore(value  , Pet){
     if("large" == value.size && Pet.pounds > 50){
         score +=1;
     }
+    console.log(score);
     return score;
 }
 
