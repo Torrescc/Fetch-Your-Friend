@@ -124,7 +124,9 @@ function createClicked(event) {
 		"username" : username,
 		"pass" : pass
 	};
-	localStorage.setItem(email, JSON.stringify(user));
+	
+	sessionStorage.setItem("username", username);
+	localStorage.setItem(username, JSON.stringify(user));
 	
 	// How to check if variables are valid size?
 
@@ -159,8 +161,10 @@ function signInClicked(event) {
 		document.getElementById("sign_error_msg").style.visibility = "visible";
 		return;
 	}
+	
+	let userInfo = JSON.parse(localStorage.getItem(username));
 
-	if (username === localStorage.getItem("username") && userpass === localStorage.getItem("password")) {
+	if (username === userInfo.username && userpass === userInfo.pass) {
 		document.getElementById("sign_error_msg").style.visibility = "hidden";
 
 		localStorage.setItem("signed_in", "TRUE");
