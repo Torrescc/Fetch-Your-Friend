@@ -569,11 +569,15 @@ var exampleValue = {
     breed : "husky"
 };
 function evaluateScore(value  , Pet){
-    let score = 0;
-    console.log(Pet);
     
-    if(Pet.animal.toLowerCase() == value.animal.toLowerCase()){
-        score += 3;
+    let score = 0;
+    if(valueObject == null){
+        return score;
+    }
+    if(value.animal != null){
+        if(Pet.animal.toLowerCase() == value.animal.toLowerCase()){
+            score += 3;
+        }
     }
     for(let i =0; i < Pet.breed.length; i++){
         if(value.breed.toLowerCase() == Pet.breed[i]){
@@ -587,6 +591,7 @@ function evaluateScore(value  , Pet){
     }
 
     // check age
+    /*
     if("puppy" == value.age && Pet.months < 9){
         score += 1;
     }
@@ -604,7 +609,7 @@ function evaluateScore(value  , Pet){
     if("large" == value.size && Pet.pounds > 50){
         score +=1;
     }
-    console.log(score);
+    */
     return score;
 }
 
