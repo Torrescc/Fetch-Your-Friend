@@ -4,7 +4,7 @@ const app = express();
 const PORT = 3000; // You can change the port number if needed
 
 // Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 // Start the server
 app.listen(PORT, () => {
