@@ -5,9 +5,10 @@ function main() {
 	loadSavedPets();
 }
 
+/* Loads the user's info into the profile page */
 function loadUser() {
-	let userEmail = sessionStorage.getItem("email");
-	let userString = localStorage.getItem(userEmail);
+	let username = sessionStorage.getItem("username");
+	let userString = localStorage.getItem(username);
 	let userObject = JSON.parse(userString);
 	
 	$("#name").html("Name: " + userObject.name);
@@ -15,8 +16,9 @@ function loadUser() {
 	$("#username").html("Username: " + userObject.username);
 }
 
-// Only skeleton code at this point!
+/* Loads the user's saved pets into the profile page */
 function loadSavedPets() {
-	let savedString = localStorage.getItem("saved");
+	let savedString = localStorage.getItem("savedPets");
 	let savedObject = JSON.parse(savedString);
+	addAllSavedPetsToCatalog(savedObject);
 }

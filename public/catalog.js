@@ -7,10 +7,7 @@ var pageNumber = 1;
 
 // checks which function we are using
 let url = window.location.href.slice(window.location.href.lastIndexOf("/")+1 , window.location.href.lastIndexOf("?"));
-if(url == "catalog.html" || url == "catalog.htm"){
-    window.addEventListener("DOMContentLoaded", connect);
-    catalogDisplayingNewPets();
-}
+
 if(url ==  "swipe.htm" || url == "swipe.html"){
     startSwipeDisplayingNewPets();
 }
@@ -33,13 +30,15 @@ $(function() {
         savedPets = [];
         localStorage.setItem("savedPets" , JSON.stringify(savedPets));
     }
-    if(url == "profile.html" || url == "profile.htm"){
-        savedPets = JSON.parse(localStorage.getItem("savedPets"));
-        for(let i = 0; i < savedPets.length; i++){
-            addPetToSavedPets(savedPets[i]);
-        }
-    }
+    
 })
+function addAllSavedPetsToCatalog(savedPets){
+    for(let i = 0; i < savedPets.length; i++){
+        addPetToSavedPets(savedPets[i]);
+    }
+}
+
+
 //page turner functions
 function connect(){
     document.getElementById("pageTurner").children[0].addEventListener("click" , pageDown);
@@ -538,9 +537,86 @@ function addTraits(container , traits){
         divTraitList.appendChild(divTrait);
     }
     
-
 }
 // end of pet elements
+
+
+if(url == "catalog.html" || url == "catalog.htm"){
+    $(function (){
+        let query = window.location.href.slice(window.location.href.lastIndexOf("?") + 1, window.location.href.length);
+
+        let parsedquery = query.split("&" , 5);
+        let valueString = "{"
+        for(let i = 0; i < parsedquery.length; i++){
+            let attribute = parsedquery[i].split("=" , 2 )
+            valueString += ' "' + attribute[0] + '" : "' + attribute[1] + '" ,'
+        }
+        if(!(window.location.href.lastIndexOf("?") == -1)){
+            valueObject = JSON.parse(valueString.slice(0 , valueString.length-1) + "}");
+
+        }
+        console.log(valueObject);
+        catalogDisplayingNewPets();
+
+    });
+    window.addEventListener("DOMContentLoaded", connect);
+}
+var exampleValue = {
+    age : "puppy" ,
+    size : "small",
+    animal : "dog",
+    trait : "smelly",
+    breed : "husky"
+};
+function evaluateScore(value  , Pet){
+    
+    let score = 0;
+    if(valueObject == null){
+        return score;
+    }
+    if(value.animal != null){
+        if(Pet.animal.toLowerCase() == value.animal.toLowerCase()){
+            score += 3;
+        }
+    }
+    for(let i =0; i < Pet.breed.length; i++){
+        if(value.breed.toLowerCase() == Pet.breed[i]){
+            score += 1;
+        }
+    }
+    for(let i =0; i < Pet.traits.length; i++){
+        if(value.trait.toLowerCase() == Pet.traits[i]){
+            score += 1;
+        }
+    }
+
+    // check age
+    /*
+    if("puppy" == value.age && Pet.months < 9){
+        score += 1;
+    }
+    if("adult" == value.age && Pet.months > 8){
+        score += 1;
+    }
+
+    // check size
+    if("small" == value.size && Pet.pounds < 20){
+        score += 1;
+    }
+    if("medium" == value.size && Pet.pounds < 50 && Pet.pounds > 20){
+        score +=1;
+    }
+    if("large" == value.size && Pet.pounds > 50){
+        score +=1;
+    }
+    */
+    return score;
+}
+
+
+
+
+
 
 // helper functions for getting the JSON from a Class
 function isJsonString(str) {
