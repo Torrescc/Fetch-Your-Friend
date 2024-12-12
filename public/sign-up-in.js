@@ -112,14 +112,19 @@ function createClicked(event) {
 
 	localStorage.setItem("signed_in", "FALSE");
 	localStorage.setItem("user ID", 0);
+
 	let name = document.getElementById("name").value;
-	localStorage.setItem("name", name);
 	let email = document.getElementById("email").value;
-	localStorage.setItem("email address", email);
 	let username = document.getElementById("user").value;
-	localStorage.setItem("username", username);
 	let pass = document.getElementById("pass").value;
-	localStorage.setItem("password", pass);
+	
+	let user = {
+		"email" : email,
+		"name" : name,
+		"username" : username,
+		"pass" : pass
+	};
+	localStorage.setItem(email, JSON.stringify(user));
 	
 	// How to check if variables are valid size?
 
@@ -131,10 +136,12 @@ function createClicked(event) {
 	createMessage.style.marginTop = "10px";
 	document.body.appendChild(createMessage); // Append it to the body or a specific container
 	
+
 	document.getElementById("name").value = "";
     document.getElementById("email").value = "";
     document.getElementById("user").value = "";
     document.getElementById("pass").value = "";
+
 }
 
 function signInClicked(event) {
@@ -155,6 +162,7 @@ function signInClicked(event) {
 
 	if (username === localStorage.getItem("username") && userpass === localStorage.getItem("password")) {
 		document.getElementById("sign_error_msg").style.visibility = "hidden";
+
 		localStorage.setItem("signed_in", "TRUE");
 
 		// Success message
@@ -169,6 +177,8 @@ function signInClicked(event) {
 		setTimeout(() => {
 			window.location.replace("index.html");
 		}, 2000); // Delay before redirection (in milliseconds)
+
+		sessionStorage.setItem("email", email);
 
 	} else {
 		document.getElementById("sign_error_msg").textContent = "Incorrect username or password.";
