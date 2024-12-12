@@ -1,10 +1,10 @@
 window.addEventListener("DOMContentLoaded", main);
 
 function main() {
-    console.log("sign in/sign up loaded");
-    // Buttons clicked methods
-    $("#createaccount").click(createClicked);
-    $("#signin").click(signInClicked);
+	console.log("sign in/sign up loaded");
+	// Buttons clicked methods
+	$("#createaccount").click(createClicked);
+	$("#signin").click(signInClicked);
 }
 
 function createClicked(event) {
@@ -24,46 +24,36 @@ function createClicked(event) {
         return;
     }
 
-    // Hash the password before sending it to the server
-    const saltRounds = 10;
-    bcrypt.hash(password, saltRounds, function (err, hashedPassword) {
-        if (err) {
-            console.error('Error hashing password:', err);
-            alert("An error occurred. Please try again.");
-            return;
+    // Send data to the backend
+    $.ajax({
+        url: "http://augwebapps.com:3809/create-account",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            name: name,
+            email: email,
+            username: username,
+            password_hash: password,
+        }),
+        success: function (response) {
+            console.log(response.message);
+            alert("Account created successfully!");
+            localStorage.setItem("signed_in", "FALSE");
+            localStorage.setItem("user_id", 0);
+            localStorage.setItem("username", username);
+        },
+        error: function (xhr) {
+            console.error(xhr.responseText);
+            alert("Error creating account: " + xhr.responseText);
         }
-
-        // Send data to the backend
-        $.ajax({
-            url: "http://augwebapps.com:3809/create-account",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({
-                name: name,
-                email: email,
-                username: username,
-                password_hash: hashedPassword, // Send hashed password
-            }),
-            success: function (response) {
-                console.log(response.message);
-                alert("Account created successfully!");
-                localStorage.setItem("signed_in", "FALSE");
-                localStorage.setItem("user_id", 0);
-                localStorage.setItem("username", username);
-            },
-            error: function (xhr) {
-                console.error(xhr.responseText);
-                alert("Error creating account: " + xhr.responseText);
-            }
-        });
-
-        // Clear input fields
-        document.getElementById("name").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("user").value = "";
-        document.getElementById("pass").value = "";
-        document.getElementById("confirm").value = "";
     });
+
+    // Clear input fields
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("user").value = "";
+    document.getElementById("pass").value = "";
+    document.getElementById("confirm").value = "";
 }
 
 function signInClicked(event) {
@@ -80,7 +70,7 @@ function signInClicked(event) {
         return;
     }
 
-    // Send login request with raw password for server-side comparison
+    // Send login request
     $.ajax({
         url: "http://augwebapps.com:3809/validate-login",
         type: "POST",
@@ -102,7 +92,6 @@ function signInClicked(event) {
 }
 
 
-
 /*
 function createClicked(event) {
 	console.log("Create account button clicked");
@@ -112,21 +101,15 @@ function createClicked(event) {
 
 	localStorage.setItem("signed_in", "FALSE");
 	localStorage.setItem("user ID", 0);
-
 	let name = document.getElementById("name").value;
+	localStorage.setItem("name", name);
 	let email = document.getElementById("email").value;
+	localStorage.setItem("email address", email);
 	let username = document.getElementById("user").value;
+	localStorage.setItem("username", username);
 	let pass = document.getElementById("pass").value;
-	
-	let user = {
-		"email" : email,
-		"name" : name,
-		"username" : username,
-		"pass" : pass
-	};
-	
-	sessionStorage.setItem("username", username);
-	localStorage.setItem(username, JSON.stringify(user));
+	localStorage.setItem("password", pass);
+
 	
 	// How to check if variables are valid size?
 
@@ -138,12 +121,10 @@ function createClicked(event) {
 	createMessage.style.marginTop = "10px";
 	document.body.appendChild(createMessage); // Append it to the body or a specific container
 	
-
 	document.getElementById("name").value = "";
     document.getElementById("email").value = "";
     document.getElementById("user").value = "";
     document.getElementById("pass").value = "";
-
 }
 
 function signInClicked(event) {
@@ -166,7 +147,6 @@ function signInClicked(event) {
 
 	if (username === userInfo.username && userpass === userInfo.pass) {
 		document.getElementById("sign_error_msg").style.visibility = "hidden";
-
 		localStorage.setItem("signed_in", "TRUE");
 
 		// Success message
@@ -181,8 +161,6 @@ function signInClicked(event) {
 		setTimeout(() => {
 			window.location.replace("index.html");
 		}, 2000); // Delay before redirection (in milliseconds)
-
-		sessionStorage.setItem("email", email);
 
 	} else {
 		document.getElementById("sign_error_msg").textContent = "Incorrect username or password.";
